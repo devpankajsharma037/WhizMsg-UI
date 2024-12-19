@@ -6,10 +6,11 @@ import { CloseIcon, HamburgerIcon } from "@/assets/icons";
 import PrimaryButton from "../buttons/PrimaryButton";
 import Container from "../UI/Container";
 import logo from "@/assets/shared/logo.svg";
+import Link from "next/link";
 
 const navigation = [
   { name: "Features", href: "#" },
-  { name: "Pricing", href: "#" },
+  { name: "Pricing", href: "/pricing" },
   { name: "Help", href: "#" },
   { name: "Guide", href: "#" },
   { name: "Earn with Us", href: "#" },
@@ -37,13 +38,13 @@ export default function Header() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="text-base font-medium text-secondary hover:text-primary"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -73,13 +74,13 @@ export default function Header() {
           <div className="-my-6 divide-y divide-gray-500/10">
             <div className="space-y-2 py-6">
               {navigation.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium text-secondary hover:text-primary"
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
             <PrimaryButton>Install for Free</PrimaryButton>
