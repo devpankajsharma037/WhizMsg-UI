@@ -25,7 +25,7 @@ export default function Pricing() {
         </p>
         <div className="mt-16 flex justify-center">
           <fieldset aria-label="Payment frequency">
-            <RadioGroup
+            {/* <RadioGroup
               value={frequency}
               onChange={setFrequency}
               className="grid grid-cols-3 gap-4 rounded-full p-1  text-center font-semibold ring-1 ring-inset ring-[#3f4e41] transition-all duration-300"
@@ -39,10 +39,16 @@ export default function Pricing() {
                   <span className="text-lg">{option.label}</span>
                 </Radio>
               ))}
-            </RadioGroup>
+            </RadioGroup> */}
+
+            <div className="w-52 rounded-full p-1  text-center font-semibold ring-1 ring-inset ring-[#3f4e41] transition-all duration-300">
+              <div className="cursor-pointer rounded-full px-4 py-2  text-secondary ">
+                Pricing
+              </div>
+            </div>
           </fieldset>
         </div>
-        <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
+        <div className="isolate mx-auto mt-10 grid grid-cols-1 gap-8 md:max-w-2xl justify-center md:grid-cols-2 xl:mx-auto ">
           {pricing.tiers.map((tier) => (
             <div
               key={tier.id}

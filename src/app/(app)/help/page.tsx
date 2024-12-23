@@ -1,6 +1,26 @@
+"use client";
+
+import { NextIcon } from "@/assets/icons";
 import Container from "@/components/UI/Container";
+import { whizmsgFAQs, whizMsgFAQType } from "@/mock/faq";
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@headlessui/react";
+import { useState } from "react";
 
 export default function HomePage() {
+  const [faqType, setFaqsType] = useState("All");
+
+  const filteredFaqs = whizmsgFAQs?.filter((elm) => {
+    if (faqType === "All") {
+      return whizmsgFAQs;
+    } else {
+      return elm?.type.toLowerCase() === faqType.toLowerCase();
+    }
+  });
+
   return (
     <div>
       <div className="relative isolate overflow-hidden bg-primary-light px-6 py-24 sm:py-32 lg:px-8">
@@ -22,45 +42,50 @@ export default function HomePage() {
       </div>
       <Container>
         <div className="flex justify-center mx-auto my-10 max-w-[500px]">
-          {[
-            "All",
-            "Others",
-            "Broadcasting",
-            "Account",
-            "Payments",
-            "Returns",
-          ].map((tab) => {
+          {whizMsgFAQType.map((tab) => {
             return (
-              <a
+              <button
                 key={tab}
-                className={"rounded-md px-3 py-2 text-lg  font-medium"}
+                onClick={() => setFaqsType(tab)}
+                className={`rounded-md px-3 py-2 text-lg  font-medium ${
+                  faqType === tab ? "text-primary" : ""
+                }`}
               >
                 {tab}
-              </a>
+              </button>
             );
           })}
         </div>
 
         <div className="max-w-[800px] mx-auto">
-          <div className="flex items-center justify-between p-4 bg-[#f6f6f6] rounded-lg shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-200 cursor-pointer">
-            <span className="text-secondary font-semibold">
-              Can ChatGPT respond in different languages on WhatsApp Business?
-            </span>
-            <div className="flex items-center justify-center w-6 h-6 bg-secondary rounded-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 text-white"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M9 18l6-6-6-6"></path>
-              </svg>
-            </div>
-          </div>
+          <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
+            {filteredFaqs?.map(
+              (faq: { question: string; description: string }) => (
+                <Disclosure key={faq.question} as="div" className="pt-6">
+                  <dt>
+                    <DisclosureButton className="group flex w-full items-start justify-between text-left text-secondary">
+                      <span className="text-base/7 font-semibold">
+                        {faq.question}
+                      </span>
+                      <span className="ml-6 flex h-7 items-center">
+                        <div className="size-6 group-data-[open]:hidden">
+                          <NextIcon />
+                        </div>
+                        <div className="size-6 group-[&:not([data-open])]:hidden transform rotate-90 transition-transform duration-300 ease-in-out">
+                          <NextIcon />
+                        </div>
+                      </span>
+                    </DisclosureButton>
+                  </dt>
+                  <DisclosurePanel as="dd" className="mt-2 pr-12">
+                    <p className="text-base/7 text-secondary">
+                      {faq.description}
+                    </p>
+                  </DisclosurePanel>
+                </Disclosure>
+              )
+            )}
+          </dl>
         </div>
       </Container>
     </div>
