@@ -2,12 +2,11 @@
 
 import React, { useState } from "react";
 import { pricing, tableSections, tiers } from "../../../mock/pricing";
-import { CheckIcon } from "@/assets/icons";
+import { CheckIcon, CrossIcon } from "@/assets/icons";
 import Container from "@/components/UI/Container";
 import { Radio, RadioGroup } from "@headlessui/react";
 
 export default function Pricing() {
-  const [frequency, setFrequency] = useState(pricing.frequencies[0]);
   return (
     <Container>
       <div className="mt-10 px-6 sm:mt-16 lg:px-8">
@@ -25,24 +24,14 @@ export default function Pricing() {
         </p>
         <div className="mt-16 flex justify-center">
           <fieldset aria-label="Payment frequency">
-            <RadioGroup
-              value={frequency}
-              onChange={setFrequency}
-              className="grid grid-cols-3 gap-4 rounded-full p-1  text-center font-semibold ring-1 ring-inset ring-[#3f4e41] transition-all duration-300"
-            >
-              {pricing.frequencies.map((option) => (
-                <Radio
-                  key={option.value}
-                  value={option}
-                  className="cursor-pointer rounded-full px-4 py-2  text-secondary transition-all duration-300 ease-in-out transform hover:scale-105 data-[checked]:bg-[#3f4e41] data-[checked]:text-white data-[checked]:shadow-md"
-                >
-                  <span className="text-lg">{option.label}</span>
-                </Radio>
-              ))}
-            </RadioGroup>
+            <div className="w-52 rounded-full p-1  text-center font-semibold ring-1 ring-inset ring-[#3f4e41] transition-all duration-300">
+              <div className="cursor-pointer rounded-full px-4 py-2  text-secondary ">
+                Pricing
+              </div>
+            </div>
           </fieldset>
         </div>
-        <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
+        <div className="isolate mx-auto mt-10 grid grid-cols-1 gap-8 md:max-w-2xl justify-center md:grid-cols-2 xl:mx-auto ">
           {pricing.tiers.map((tier) => (
             <div
               key={tier.id}
@@ -82,110 +71,72 @@ export default function Pricing() {
           ))}
         </div>
       </div>
-      <div className="-mt-6 space-y-16">
+      <div className="mt-8 md:mt-12 xl:mt-16 space-y-8 md:space-y-12 xl:space-y-16 w-full overflow-x-auto">
+        {/* {tiers.map((tier) => (
+          <table className="relative ">
+            <thead
+              key={tier.id}
+              className="text-sm font-semibold text-gray-600"
+            >
+              <span className="block mt-2">{tier.name}</span>
+            </thead>
+          </table>
+        ))} */}
         {tableSections.map((section) => (
-          <div key={section.name} className="space-y-6">
+          <div
+            key={section.name}
+            className="space-y-2 md:space-y-4 xl:space-y-6"
+          >
             <h3 className="text-xl font-semibold text-gray-900">
               {section.name}
             </h3>
-            <div className="relative -mx-8 mt-10">
-              {/* Fake card backgrounds */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-              >
-                {tiers.map((_, index) => (
-                  <div
-                    key={index}
-                    className="size-full rounded-lg bg-white shadow-sm"
-                  />
-                ))}
-              </div>
-
-              <table className="relative w-full border-separate border-spacing-x-8">
-                <thead>
-                  <tr className="text-left border-b-2 border-gray-300">
-                    <th scope="col">
-                      <span className="sr-only">Feature</span>
+            <table className="relative w-full border-separate border-spacing-x-8">
+              <thead>
+                <tr className="text-left ">
+                  <th scope="col">
+                    <span className="sr-only">Feature</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="">
+                {section.features.map((feature: any) => (
+                  <tr key={feature.name} className="my-5">
+                    <th
+                      scope="row"
+                      className="w-1/4 py-3 pr-4 text-left text-sm font-normal text-gray-900"
+                    >
+                      {feature.name}
                     </th>
                     {tiers.map((tier) => (
-                      <th
+                      <td
                         key={tier.id}
-                        scope="col"
-                        className="text-sm font-semibold text-gray-600"
+                        className="relative w-1/4 px-4 py-0  text-center"
                       >
-                        <span className="block mt-2">{tier.name}</span>
-                      </th>
+                        <span className="relative  py-3  bg-none  md:bg-[#DCF6D45E] rounded-xl my-3 flex justify-center  w-full">
+                          {feature.tiers[tier.name] === "string" ? (
+                            <span className={` text-sm`}>
+                              {feature.tiers[tier.name]}
+                            </span>
+                          ) : (
+                            <>
+                              {feature.tiers[tier.name] === true ? (
+                                <span className="text-secondary">
+                                  <CheckIcon />
+                                </span>
+                              ) : (
+                                <span className="text-secondary">
+                                  <CrossIcon />
+                                </span>
+                              )}
+                            </>
+                          )}
+                        </span>
+                      </td>
                     ))}
                   </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {section.features.map((feature, featureIdx) => (
-                    <tr key={feature.name} className="hover:bg-gray-50">
-                      <th
-                        scope="row"
-                        className="w-1/4 py-3 pr-4 text-left text-sm font-normal text-gray-900"
-                      >
-                        {feature.name}
-                        {featureIdx !== section.features.length - 1 ? (
-                          <div className="absolute inset-x-8 mt-3 h-px bg-gray-200" />
-                        ) : null}
-                      </th>
-                      {tiers.map((tier) => (
-                        <td
-                          key={tier.id}
-                          className="relative w-1/4 px-4 py-0 text-center"
-                        >
-                          <span className="relative size-full py-3">
-                            {typeof feature.tiers[tier.name] === "string" ? (
-                              <span
-                                className={`${
-                                  tier.featured
-                                    ? "font-semibold text-indigo-600"
-                                    : "text-gray-900"
-                                } text-sm`}
-                              >
-                                {feature.tiers[tier.name]}
-                              </span>
-                            ) : (
-                              <>
-                                {feature.tiers[tier.name] === true ? (
-                                  <CheckIcon
-                                    aria-hidden="true"
-                                    className="mx-auto size-5 text-indigo-600"
-                                  />
-                                ) : (
-                                  <span className="text-gray-400">✘</span>
-                                )}
-
-                                <span className="sr-only">
-                                  {feature.tiers[tier.name] === true
-                                    ? "Yes"
-                                    : "No"}
-                                </span>
-                              </>
-                            )}
-                          </span>
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-
-              {/* Fake card borders */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
-              >
-                {tiers.map((tier) => (
-                  <div
-                    key={tier.id}
-                    className="ring-1 ring-gray-900/10 rounded-lg"
-                  />
                 ))}
-              </div>
-            </div>
+              </tbody>
+            </table>
           </div>
         ))}
       </div>

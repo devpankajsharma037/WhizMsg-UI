@@ -7,23 +7,26 @@ import PrimaryButton from "../buttons/PrimaryButton";
 import Container from "../UI/Container";
 import logo from "@/assets/shared/logo.svg";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navigation = [
-  { name: "Features", href: "#" },
+  { name: "Features", href: "/" },
   { name: "Pricing", href: "/pricing" },
-  { name: "Help", href: "#" },
-  { name: "Guide", href: "#" },
+  { name: "Help", href: "/help" },
+  { name: "Guide", href: "/guide" },
   { name: "Earn with Us", href: "#" },
-  { name: "Contact Us", href: "#" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="bg-white">
       <Container>
-        <nav className="mx-auto flex max-w-7xl items-center justify-between">
+        <nav className="flex items-center justify-between">
           <div className="flex lg:flex-1">
             <Image alt="" src={logo} className="h-auto w-[90px]" />
           </div>
@@ -41,7 +44,9 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-base font-medium text-secondary hover:text-primary"
+                className={`text-base font-medium hover:text-primary ${
+                  item.href === pathname ? "text-primary" : " text-secondary"
+                }`}
               >
                 {item.name}
               </Link>
@@ -54,7 +59,7 @@ export default function Header() {
       </Container>
       {/* Mobile menu */}
       <div
-        className={`fixed inset-y-0 right-0 z-10 w-full max-w-sm bg-white px-6 py-6 shadow-lg transform transition-transform duration-300 ease-in-out ${
+        className={`fixed px-6 inset-y-0 right-0 z-10 w-full max-w-sm bg-white   shadow-lg transform transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -77,7 +82,13 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium text-secondary hover:text-primary"
+                  className={`-mx-3 block rounded-lg px-3 py-2 text-base font-medium text-secondary hover:text-primary *:
+                     ${
+                       item.href === pathname
+                         ? "text-primary"
+                         : " text-secondary"
+                     }
+                    `}
                 >
                   {item.name}
                 </Link>

@@ -86,8 +86,81 @@ export const CheckIcon = () => {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        d="m4.5 12.75 6 6 9-13.5"
       />
+    </svg>
+  );
+};
+
+export const CrossIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 18 18 6M6 6l12 12"
+      />
+    </svg>
+  );
+};
+
+export const SearchIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+      />
+    </svg>
+  );
+};
+
+export const NextIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full text-white bg-secondary rounded-full"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M9 18l6-6-6-6"></path>
+    </svg>
+  );
+};
+
+export const StarIcon = () => {
+  return (
+    <svg
+      className="text-yellow-400 size-5 shrink-0"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+      data-slot="icon"
+    >
+      <path
+        fillRule="evenodd"
+        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
+        clipRule="evenodd"
+      ></path>
     </svg>
   );
 };
