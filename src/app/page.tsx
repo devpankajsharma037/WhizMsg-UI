@@ -2,6 +2,8 @@
 import Container from "@/components/UI/Container";
 import { features } from "@/mock/home";
 import BannerSection from "@/views/features/BannerSection";
+import CustomerReview from "@/views/features/CustomerReview";
+import FaqsSection from "@/views/features/Faqs";
 
 export default function Home() {
   return (
@@ -84,7 +86,7 @@ export default function Home() {
       </div> */}
       <div className="flex justify-center items-center bg-[#F5F5F5]">
         <Container>
-          <section className="pt-20 px-3">
+          <section className="pt-10 md:pt-14 px-3">
             <div className="mx-auto text-center">
               <p className="text-primary font-medium text-left  font-poppins">
                 #Best WhatsApp Chrome Extension
@@ -92,7 +94,7 @@ export default function Home() {
             </div>
           </section>
           <section>
-            <h2 className="text-secondary font-plus font-semibold leading-[60px] text-4xl mt-2 mb-1">
+            <h2 className="text-secondary font-plus font-semibold xl:leading-[60px] text-2xl md:text-3xl xl:text-4xl mt-2 mb-1">
               Improve productivity 🎯 and save time with WAWCD
             </h2>
           </section>
@@ -102,7 +104,7 @@ export default function Home() {
               individuals to automate WhatsApp. Here's how it typically works:
             </p>
           </section>
-          <section className="grid grid-cols-1 md:grid-cols-2 my-12 gap-5">
+          <section className="grid grid-cols-1 md:grid-cols-2 my-10 sm:my-12 gap-5">
             {features?.map((elm: any) => {
               return (
                 <div className="group  transition-all" key={elm?.id}>
@@ -111,16 +113,16 @@ export default function Home() {
                       type="button"
                       className="items-center w-full py-4 border-b-blue-gray-100  text-left select-none  text-secondary border-b-0 flex flex-row justify-start text-lg  font-bold pb-2 leading-9 "
                     >
-                      <h3 className="flex items-center group-hover:text-white text-xl">
+                      <h3 className="flex flex-col sm:flex-row sm:items-center group-hover:text-white text-base md:text-xl">
                         <p className="whitespace-nowrap font-bold mr-1">
                           0{elm?.id}
                         </p>
                         <div className="flex items-center ">
                           <p className="font-extrabold">{elm?.title}</p>
-                          <span className="font-normal text-primary items-center text-sm ml-2 group-hover:text-white">
+                          <span className="font-normal text-primary items-center text-xs sm:text-sm ml-2 group-hover:text-white">
                             {elm?.status}
                           </span>
-                          <span className="text-secondary text-lg block xs:inline font-medium  ml-1">
+                          <span className="text-secondary text-base sm:text-lg block xs:inline font-medium  ml-1">
                             {elm?.icon}
                           </span>
                         </div>
@@ -141,6 +143,14 @@ export default function Home() {
           </section>
         </Container>
       </div>
+      <Container>
+        <div className="my-8 sm:my-10">
+          <CustomerReview />
+        </div>
+        <div className="my-8 sm:my-10">
+          <FaqsSection />
+        </div>
+      </Container>
     </div>
   );
 }

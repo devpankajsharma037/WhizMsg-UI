@@ -23,12 +23,12 @@ export default function HomePage() {
 
   return (
     <div>
-      <div className="relative isolate overflow-hidden bg-primary-light px-6 py-24 sm:py-32 lg:px-8">
+      <div className="relative isolate overflow-hidden bg-primary-light py-14 sm:py-20 px-3">
         <div className="mx-auto  text-center">
-          <h2 className="text-5xl font-semibold tracking-tight text-secondary sm:text-7xl">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-secondary xl:text-7xl">
             Help
           </h2>
-          <p className="mt-8 text-lg font-medium text-balance sm:text-xl/8">
+          <p className="mt-4 md:mt-6 xl:mt-8 font-medium text-balance text-sm sm:text-base">
             Have any questions? We’re here to assist you.
           </p>
           <div className="mt-5 grid grid-cols-1 relative max-w-xl mx-auto">
@@ -41,7 +41,7 @@ export default function HomePage() {
         </div>
       </div>
       <Container>
-        <div className="flex justify-center mx-auto my-10 max-w-[500px]">
+        <div className="flex flex-wrap gap-5 justify-center mx-auto my-5 md:my-7 xl:my-10 max-w-[500px]">
           {whizMsgFAQType.map((tab) => {
             return (
               <button
@@ -78,7 +78,7 @@ export default function HomePage() {
                     </DisclosureButton>
                   </dt>
                   <DisclosurePanel as="dd" className="mt-2 pr-12">
-                    <p className="text-base/7 text-secondary">
+                    <p className="text-sm sm:text-base text-secondary">
                       {faq.description}
                     </p>
                   </DisclosurePanel>

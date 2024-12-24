@@ -7,7 +7,6 @@ import Container from "@/components/UI/Container";
 import { Radio, RadioGroup } from "@headlessui/react";
 
 export default function Pricing() {
-  const [frequency, setFrequency] = useState(pricing.frequencies[0]);
   return (
     <Container>
       <div className="mt-10 px-6 sm:mt-16 lg:px-8">
@@ -25,22 +24,6 @@ export default function Pricing() {
         </p>
         <div className="mt-16 flex justify-center">
           <fieldset aria-label="Payment frequency">
-            {/* <RadioGroup
-              value={frequency}
-              onChange={setFrequency}
-              className="grid grid-cols-3 gap-4 rounded-full p-1  text-center font-semibold ring-1 ring-inset ring-[#3f4e41] transition-all duration-300"
-            >
-              {pricing.frequencies.map((option) => (
-                <Radio
-                  key={option.value}
-                  value={option}
-                  className="cursor-pointer rounded-full px-4 py-2  text-secondary transition-all duration-300 ease-in-out transform hover:scale-105 data-[checked]:bg-[#3f4e41] data-[checked]:text-white data-[checked]:shadow-md"
-                >
-                  <span className="text-lg">{option.label}</span>
-                </Radio>
-              ))}
-            </RadioGroup> */}
-
             <div className="w-52 rounded-full p-1  text-center font-semibold ring-1 ring-inset ring-[#3f4e41] transition-all duration-300">
               <div className="cursor-pointer rounded-full px-4 py-2  text-secondary ">
                 Pricing
@@ -88,7 +71,7 @@ export default function Pricing() {
           ))}
         </div>
       </div>
-      <div className="mt-16 space-y-16">
+      <div className="mt-8 md:mt-12 xl:mt-16 space-y-8 md:space-y-12 xl:space-y-16 w-full overflow-x-auto">
         {/* {tiers.map((tier) => (
           <table className="relative ">
             <thead
@@ -100,7 +83,10 @@ export default function Pricing() {
           </table>
         ))} */}
         {tableSections.map((section) => (
-          <div key={section.name} className="space-y-6">
+          <div
+            key={section.name}
+            className="space-y-2 md:space-y-4 xl:space-y-6"
+          >
             <h3 className="text-xl font-semibold text-gray-900">
               {section.name}
             </h3>
@@ -126,7 +112,7 @@ export default function Pricing() {
                         key={tier.id}
                         className="relative w-1/4 px-4 py-0  text-center"
                       >
-                        <span className="relative  py-3 bg-[#DCF6D45E] rounded-xl my-3 flex justify-center  w-full">
+                        <span className="relative  py-3  bg-none  md:bg-[#DCF6D45E] rounded-xl my-3 flex justify-center  w-full">
                           {feature.tiers[tier.name] === "string" ? (
                             <span className={` text-sm`}>
                               {feature.tiers[tier.name]}

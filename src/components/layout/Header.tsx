@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <header className="bg-white">
       <Container>
-        <nav className="mx-auto flex max-w-7xl items-center justify-between">
+        <nav className="flex items-center justify-between">
           <div className="flex lg:flex-1">
             <Image alt="" src={logo} className="h-auto w-[90px]" />
           </div>

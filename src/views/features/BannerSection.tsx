@@ -6,14 +6,14 @@ const BannerSection = () => {
   return (
     <div className="bg-primary-light">
       <Container>
-        <div className="pt-20 px-3">
+        <div className="py-14 sm:py-20 px-3">
           <div className="mx-auto text-center">
             <div>
-              <p className="text-green1 font-medium text-center font-poppins">
+              <p className="text-secondary font-medium text-center font-poppins">
                 #Best WhatsApp Chrome Extension
               </p>
             </div>
-            <h2 className="text-[30px] sm:text-[45px] md:text-[52px] font-bold sm:font-semibold font-plus text-center mb-4">
+            <h2 className="text-[26px] sm:text-[35px] md:text-[40px] xl:text-[52px] font-bold sm:font-semibold font-plus text-center mb-4">
               Tool That Works —No WhatsApp API, No Extra Cost, Just Results 🎯!
             </h2>
             <p className="max-w-[960px] mx-auto text-secondary mt-6 text-indigo-200">
@@ -21,7 +21,7 @@ const BannerSection = () => {
               WhatsApp Web automation solution. Save time, reduce errors, and
               improve efficiency.
             </p>
-            <div className="flex items-center justify-center flex-col sm:flex-row gap-5 my-8">
+            <div className="flex items-center justify-center flex-col sm:flex-row gap-5 pt-8">
               <PrimaryButton extraCss="px-5 flex items-center gap-2 font-semibold">
                 <ChargeIcon />
                 Install for Free
@@ -30,7 +30,7 @@ const BannerSection = () => {
                 See All Featured <ArrowUpRight />
               </button>
             </div>
-            <div className="flex md:justify-end items-center md:items-start flex-col md:flex-row w-full gap-4 pb-8">
+            {/* <div className="flex md:justify-end items-center md:items-start flex-col md:flex-row w-full gap-4 pb-8">
               <section>
                 <div style={{ transform: "none", height: "100%" }}>
                   <div className="bg-white bg-opacity-70 rounded-[30px] py-4 px-8 mx-3 w-fit">
@@ -100,7 +100,6 @@ const BannerSection = () => {
                 </div>
               </section>
 
-              {/* Buttons Section */}
               <div className="max-w-[400px] px-3 sm:p-0">
                 <div className="flex flex-wrap gap-2">
                   {[
@@ -117,16 +116,12 @@ const BannerSection = () => {
                   ].map((text) => (
                     <section key={text}>
                       <div style={{ transform: "none", height: "100%" }}>
-                        {/* <div className="font-medium hover:text-secondary text-[#323232] rounded-full px-5 py-1 flex items-center transition-all duration-300 bg-white bg-opacity-70 scale-1 hover:scale-[1.025] hover:bg-[#02914c] hover:text-white">
-                          {text}
-                        </div> */}
                         <CustomButton text={text} />
                       </div>
                     </section>
                   ))}
                 </div>
 
-                {/* Integration Buttons */}
                 <div className="flex flex-wrap gap-2 mt-3">
                   {[
                     { label: "Integrations", icon: null },
@@ -160,20 +155,19 @@ const BannerSection = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </Container>
     </div>
   );
 };
-// font-medium hover:text-secondary  rounded-full px-5 py-1 flex items-center transition-all duration-300 bg-white bg-opacity-70 scale-1 hover:scale-[1.025] hover:bg-[#02914c] hover:text-white
-const CustomButton = ({ text }: { text: string }) => {
-  return (
-    <button className="relative py-1 px-5 text-[#323232] font-medium  overflow-hidden bg-white bg-opacity-70 rounded-full transition-all duration-400 ease-in-out  hover:scale-105 hover:text-white  before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#02914c] before:to-[#02914c] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-full hover:before:left-0">
-      {text}
-    </button>
-  );
-};
+// const CustomButton = ({ text }: { text: string }) => {
+//   return (
+//     <button className="relative py-1 px-5 text-[#323232] font-medium  overflow-hidden bg-white bg-opacity-70 rounded-full transition-all duration-400 ease-in-out  hover:scale-105 hover:text-white  before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#02914c] before:to-[#02914c] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-full hover:before:left-0">
+//       {text}
+//     </button>
+//   );
+// };
 
 export default BannerSection;
