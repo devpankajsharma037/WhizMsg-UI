@@ -84,7 +84,10 @@ export default function Home() {
           </div>
         </div>
       </div> */}
-      <div className="flex justify-center items-center bg-[#F5F5F5]">
+      <div
+        data-aos="fade-up"
+        className="flex justify-center items-center bg-[#F5F5F5]"
+      >
         <Container>
           <section className="pt-10 md:pt-14 px-3">
             <div className="mx-auto text-center">
@@ -100,29 +103,33 @@ export default function Home() {
           </section>
           <section>
             <p className="font-poppins font-medium leading-7 text-sm text-secondary">
-              The WAWCD WhatsApp Chrome Extension helps businesses or
-              individuals to automate WhatsApp. Here's how it typically works:
+              {`The WAWCD WhatsApp Chrome Extension helps businesses or
+              individuals to automate WhatsApp. Here's how it typically works:`}
             </p>
           </section>
           <section className="grid grid-cols-1 md:grid-cols-2 my-10 sm:my-12 gap-5">
-            {features?.map((elm: any) => {
+            {features?.map((elm) => {
               return (
-                <div className="group  transition-all" key={elm?.id}>
+                <div
+                  className="group transition-all"
+                  key={elm?.id}
+                  data-aos="zoom-in" // Add AOS animation here
+                >
                   <div className="w-full bg-white rounded-[20px] px-3 hover:shadow-[6px_4px_14px_1px_#dcdcdc] scale-1 hover:scale-[1.025] overflow-hidden group-hover:bg-[#02914c] group-hover:text-white">
                     <button
                       type="button"
-                      className="items-center w-full py-4 border-b-blue-gray-100  text-left select-none  text-secondary border-b-0 flex flex-row justify-start text-lg  font-bold pb-2 leading-9 "
+                      className="items-center w-full py-4 border-b-blue-gray-100 text-left select-none text-secondary border-b-0 flex flex-row justify-start text-lg font-bold pb-2 leading-9"
                     >
                       <h3 className="flex flex-col sm:flex-row sm:items-center group-hover:text-white text-base md:text-xl">
                         <p className="whitespace-nowrap font-bold mr-1">
                           0{elm?.id}
                         </p>
-                        <div className="flex items-center ">
+                        <div className="flex items-center">
                           <p className="font-extrabold">{elm?.title}</p>
                           <span className="font-normal text-primary items-center text-xs sm:text-sm ml-2 group-hover:text-white">
                             {elm?.status}
                           </span>
-                          <span className="text-secondary text-base sm:text-lg block xs:inline font-medium  ml-1">
+                          <span className="text-secondary text-base sm:text-lg block xs:inline font-medium ml-1">
                             {elm?.icon}
                           </span>
                         </div>
@@ -132,7 +139,7 @@ export default function Home() {
                       className="overflow-hidden group-hover:bg-[#02914c] group-hover:text-white"
                       style={{ height: "auto" }}
                     >
-                      <div className="block w-full py-4 text-secondary  font-sans text-sm font-medium  pl-10 pt-0 pb-4 pr-3 group-hover:text-white">
+                      <div className="block w-full py-4 text-secondary font-sans text-sm font-medium pl-10 pt-0 pb-4 pr-3 group-hover:text-white">
                         {elm?.description}
                       </div>
                     </div>
@@ -144,7 +151,7 @@ export default function Home() {
         </Container>
       </div>
       <Container>
-        <div className="my-8 sm:my-10">
+        <div id="testimonials" className="my-8 sm:my-10">
           <CustomerReview />
         </div>
         <div className="my-8 sm:my-10">
