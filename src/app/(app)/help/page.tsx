@@ -24,7 +24,7 @@ export default function HomePage() {
   return (
     <div>
       <div className="relative isolate overflow-hidden bg-primary-light py-14 sm:py-20 px-3">
-        <div className="mx-auto  text-center">
+        <div data-aos="zoom-in" className="mx-auto  text-center">
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-secondary xl:text-7xl">
             Help
           </h2>
@@ -41,7 +41,10 @@ export default function HomePage() {
         </div>
       </div>
       <Container>
-        <div className="flex flex-wrap gap-5 justify-center mx-auto my-5 md:my-7 xl:my-10 max-w-[500px]">
+        <div
+          data-aos="fade-up"
+          className="flex flex-wrap gap-5 justify-center mx-auto my-5 md:my-7 xl:my-10 max-w-[500px]"
+        >
           {whizMsgFAQType.map((tab) => {
             return (
               <button
@@ -62,7 +65,7 @@ export default function HomePage() {
             {filteredFaqs?.map(
               (faq: { question: string; description: string }) => (
                 <Disclosure key={faq.question} as="div" className="pt-6">
-                  <dt>
+                  <dt data-aos="zoom-in-up">
                     <DisclosureButton className="group flex w-full items-start justify-between text-left text-secondary">
                       <span className="text-base/7 font-semibold">
                         {faq.question}

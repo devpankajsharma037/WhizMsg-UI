@@ -6,18 +6,10 @@ import {
   DisclosurePanel,
 } from "@headlessui/react";
 
-const faqs = [
-  {
-    question: "How do you make holy water?",
-    answer:
-      "You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-];
-
 export default function FaqsSection() {
   return (
     <div className="bg-white">
-      <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+      <div data-aos="fade-right" className="lg:grid lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-5">
           <h2 className="text-secondary font-plus font-semibold xl:leading-[60px] text-2xl md:text-3xl xl:text-4xl my-2 mb-5">
             Frequently asked questions
@@ -38,7 +30,12 @@ export default function FaqsSection() {
             {whizmsgFAQs?.map(
               (faq: { question: string; description: string }, i) =>
                 i < 6 && (
-                  <Disclosure key={faq.question} as="div" className="pt-6">
+                  <Disclosure
+                    data-aos="fade-left"
+                    key={faq.question}
+                    as="div"
+                    className="pt-6"
+                  >
                     <dt>
                       <DisclosureButton className="group flex w-full items-start justify-between text-left text-secondary">
                         <span className="text-base/7 font-semibold">

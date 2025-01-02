@@ -5,25 +5,26 @@ import Image from "next/image";
 import logo from "@/assets/shared/logo.svg";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { ChargeIcon } from "@/assets/icons";
+import Link from "next/link";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-white">
+    <footer className="bg-white mb-8">
       <Container>
         <div className="my-8 md:my-12 px-5 py-10 md:py-12  xl:py-16 relative bg-[#DCF6D4] rounded-xl">
           <div className="flex flex-col md:flex-row gap-y-8 gap-x-8 items-center justify-between">
-            <section>
+            <section data-aos="fade-up">
               <div style={{ opacity: 1, transform: "none" }}>
-                <h3 className="font-poppins font-semibold text-[26px] sm:text-[35px] md:text-[40px] xl:text-[52px] text-primary md:w-[72%]">
+                <h3 className="font-poppins font-semibold text-3xl sm:text-[34px] leading-[50px] text-primary md:w-[72%]">
                   Excited to take your business to the next level with WHIZMSG?
                   🎉
                 </h3>
               </div>
             </section>
-            <section>
+            <section data-aos="fade-up">
               <div style={{ opacity: 1, transform: "none" }}>
                 <a
-                  href="https://chromewebstore.google.com/detail/wawcd-chatgpt-powered-wha/gbbpfmmjcaakdmhlnjfdlhlehoeikbic"
+                  href="https:chromewebstore.google.com/detail/wawcd-chatgpt-powered-wha/gbbpfmmjcaakdmhlnjfdlhlehoeikbic"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -35,12 +36,16 @@ export default function Footer() {
             </section>
           </div>
         </div>
-        <div className=" space-y-6  pb-10 lg:space-y-10">
-          <div className="flex items-center justify-between">
-            <div className="">
-              <Image src={logo} alt="logo" className="h-auto w-[90px]" />
+        <div className="md:flex md:justify-between">
+          <div className="mb-6 md:mb-0">
+            <a href="https://flowbite.com/" className="flex items-center">
+              <Image src={logo} alt="logo" className="h-auto w-[120px]" />
+            </a>
+            <div className="mb-5">
+              <p className="text-base text-blck">
+                &copy; {new Date().getFullYear()} WHIZMSG. All rights reserved.
+              </p>
             </div>
-
             <ul className="flex justify-start gap-6 ">
               <li>
                 <a
@@ -111,8 +116,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          <div className="grid grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16">
+          <div className="grid grid-cols-1 gap-8  sm:gap-10 md:gap-20 lg:gap-24 xl:gap-32 sm:grid-cols-3">
             {navigation.map((section) => (
               <div key={section.heading}>
                 <p className="font-semibold text-secondary text-lg">
@@ -121,38 +125,31 @@ export default function Footer() {
                 <ul className="mt-4 md:mt-6 space-y-4 text-sm">
                   {section.links.map((link) => (
                     <li key={link.href}>
-                      <a
+                      <Link
                         href={link.href}
-                        className="text-secondary hover:text-[#02914c] transition hover:opacity-75"
+                        className="text-secondary text-base hover:text-[#02914c] transition hover:opacity-75"
                       >
                         {link.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
-
-          <p className="text-xs text-gray-500">
-            &copy; 2022. WHIZMSG. All rights reserved.
-          </p>
         </div>
       </Container>
     </footer>
   );
-}
+};
 
 const navigation = [
   {
     heading: "Company",
     links: [
       { name: "Home", href: "/" },
-      { name: "Roadmap", href: "/roadmap" },
-      { name: "Testimonials", href: "/testimonials" },
+      { name: "Testimonials", href: "/#testimonials" },
       { name: "Why WAWCD", href: "/why-wawcd" },
-      { name: "WAWCD vs Competitors", href: "/wawcd-vs-competitors" },
-      { name: "Blog", href: "/blog" },
     ],
   },
   {
@@ -166,12 +163,14 @@ const navigation = [
   {
     heading: "Resources",
     links: [
-      { name: "FAQs", href: "/faqs" },
+      { name: "Help", href: "/help" },
       { name: "User Guide", href: "/user-guide" },
     ],
   },
-  {
-    heading: "Collaboration",
-    links: [{ name: "Earn with Us", href: "/earn-with-us" }],
-  },
+  // {
+  //   heading: "Collaboration",
+  //   links: [{ name: "Earn with Us", href: "/earn-with-us" }],
+  // },
 ];
+
+export default Footer;

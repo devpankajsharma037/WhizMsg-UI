@@ -46,12 +46,20 @@ export default function Guide() {
     <div className="mt-10 px-6 sm:mt-16 lg:px-8">
       <Container>
         <div className="mx-auto max-w-[700px] ">
-          <h1 className="text-4xl md:text-5xl text-center font-semibold tracking-tight text-secondary xl:text-7xl">
+          <h1
+            data-aos="zoom-in-up"
+            className="text-4xl md:text-5xl text-center font-semibold tracking-tight text-secondary xl:text-7xl"
+          >
             Guide
           </h1>
           <div className="mt-10 lg:mt-14 transform: none; height: 100%;">
             {posts.map((post) => (
-              <section key={post.id} className="your-section-class">
+              <section
+                key={post.id}
+                className="your-section-class"
+                data-aos="fade-up"
+                data-aos-anchor-placement="bottom-bottom"
+              >
                 <div>
                   <a className="flex flex-col md:flex-row gap-8 p-2 sm:p-4 mb-8 border border-gray-300 scale-100 hover:scale-[1.025] hover:shadow-[0px_0px_20px_2px_#dcdcdc] transition-all rounded-lg">
                     <div>

@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { pricing, tableSections, tiers } from "../../../mock/pricing";
 import { CheckIcon, CrossIcon } from "@/assets/icons";
 import Container from "@/components/UI/Container";
-import { Radio, RadioGroup } from "@headlessui/react";
 
 export default function Pricing() {
   return (
     <Container>
       <div className="mt-10 px-6 sm:mt-16 lg:px-8">
-        <div className=" text-center">
+        <div data-aos="fade-up" className=" text-center">
           <h1 className="text-base/7 font-semibold text-secondary">
             #Best WhatsApp Chrome Extension
           </h1>
@@ -19,12 +18,18 @@ export default function Pricing() {
             <span className="text-primary">Business</span>
           </p>
         </div>
-        <p className="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-primary sm:text-xl/8">
+        <p
+          data-aos="fade-up"
+          className="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-primary sm:text-xl/8"
+        >
           Find the subscription that makes the most sense for you or your team
         </p>
         <div className="mt-16 flex justify-center">
           <fieldset aria-label="Payment frequency">
-            <div className="w-52 rounded-full p-1  text-center font-semibold ring-1 ring-inset ring-[#3f4e41] transition-all duration-300">
+            <div
+              data-aos="zoom-in-up"
+              className="w-52 rounded-full p-1  text-center font-semibold ring-1 ring-inset ring-[#3f4e41] transition-all duration-300"
+            >
               <div className="cursor-pointer rounded-full px-4 py-2  text-secondary ">
                 Pricing
               </div>
@@ -34,6 +39,7 @@ export default function Pricing() {
         <div className="isolate mx-auto mt-10 grid grid-cols-1 gap-8 md:max-w-2xl justify-center md:grid-cols-2 xl:mx-auto ">
           {pricing.tiers.map((tier) => (
             <div
+              data-aos="zoom-in"
               key={tier.id}
               className={`group shadow-lg rounded-3xl p-8 transition-all duration-300 ring-2 ring-[#3f4e41] hover:ring-[#02914c] hover:bg-[#02914c] hover:scale-105 hover:text-white`}
             >
@@ -71,17 +77,8 @@ export default function Pricing() {
           ))}
         </div>
       </div>
-      <div className="mt-8 md:mt-12 xl:mt-16 space-y-8 md:space-y-12 xl:space-y-16 w-full overflow-x-auto">
-        {/* {tiers.map((tier) => (
-          <table className="relative ">
-            <thead
-              key={tier.id}
-              className="text-sm font-semibold text-gray-600"
-            >
-              <span className="block mt-2">{tier.name}</span>
-            </thead>
-          </table>
-        ))} */}
+      {/* <div className="mt-8 md:mt-12 xl:mt-16 space-y-8 md:space-y-12 xl:space-y-16 w-full overflow-x-auto">
+      
         {tableSections.map((section) => (
           <div
             key={section.name}
@@ -139,7 +136,7 @@ export default function Pricing() {
             </table>
           </div>
         ))}
-      </div>
+      </div> */}
     </Container>
   );
 }

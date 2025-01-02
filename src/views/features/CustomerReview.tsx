@@ -6,10 +6,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { reviews } from "@/mock/home";
 import { Autoplay } from "swiper/modules";
+import Image from "next/image";
 
 const CustomerReview = () => {
   return (
-    <div className="">
+    <div data-aos="fade-up" className="">
       <h2 className="text-secondary font-plus font-semibold xl:leading-[60px] text-2xl md:text-3xl xl:text-4xl my-2 mb-5">
         What our Clients say
       </h2>
@@ -29,7 +30,7 @@ const CustomerReview = () => {
       >
         {reviews.map((review) => (
           <SwiperSlide key={review.id} className="h-full">
-            <div className="flex flex-col bg-[#DCF6D4] h-[200px] md:min-h-full rounded-md p-4 hover:shadow-[6px_4px_14px_1px_#dcdcdc] scale-1 hover:scale-[1.025] transition-all">
+            <div className="flex flex-col justify-between bg-[#DCF6D4] h-[150px] md:min-h-full rounded-md p-4 hover:shadow-[6px_4px_14px_1px_#dcdcdc] scale-1 hover:scale-[1.025] transition-all">
               <div className="flex space-x-4 text-sm">
                 <div className="flex-none">
                   <img
@@ -43,13 +44,13 @@ const CustomerReview = () => {
                   <p>
                     <time dateTime={review.datetime}>{review.date}</time>
                   </p>
-                  <div className="mt-4 flex items-center">
-                    {[0, 1, 2, 3, 4].map((rating) => (
-                      <StarIcon key={rating} />
-                    ))}
-                  </div>
-                  <p className="sr-only">{review.rating} out of 5 stars</p>
                 </div>
+                <div className="mt-4 flex items-center">
+                  {[0, 1, 2, 3, 4].map((rating) => (
+                    <StarIcon key={rating} />
+                  ))}
+                </div>
+                <p className="sr-only">{review.rating} out of 5 stars</p>
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: review.content }}
