@@ -6,13 +6,13 @@ export default function ContactUs() {
   return (
     <div>
       <div className="relative isolate overflow-hidden bg-primary-light py-14 sm:py-20 px-3">
-        <div className="mx-auto  text-center">
+        <div data-aos="zoom-in" className="mx-auto  text-center">
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-secondary xl:text-7xl">
             Contact Us!
           </h2>
           <p className="mt-4 md:mt-6 xl:mt-8 font-medium text-balance text-sm sm:text-base">
-            Got questions or issues? We're here to help! Reach out for platform
-            guidance or sales inquiries. Message us now!
+            {`Got questions or issues? We're here to help! Reach out for platform
+            guidance or sales inquiries. Message us now!`}
           </p>
         </div>
       </div>
@@ -23,16 +23,22 @@ export default function ContactUs() {
               <div className="relative px-6 py-10 md:py-14 lg:static bg-primary-light">
                 <div className="mx-auto max-w-xl lg:mx-0">
                   <div className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2" />
-                  <h2 className="text-pretty text-2xl font-semibold tracking-tight text-secondary  sm:text-3xl">
+                  <h2
+                    data-aos="fade-up"
+                    className="text-pretty text-2xl font-semibold tracking-tight text-secondary  sm:text-3xl"
+                  >
                     Get in touch
                   </h2>
-                  <p className="mt-6 text-base md:text-lg/8 text-secondary">
+                  <p
+                    data-aos="zoom-in"
+                    className="mt-6 text-base md:text-lg/8 text-secondary"
+                  >
                     Proin volutpat consequat porttitor cras nullam gravida at.
                     Orci molestie a eu arcu. Sed ut tincidunt integer elementum
                     id sem. Arcu sed malesuada et magna.
                   </p>
                   <dl className="mt-10 space-y-4 text-base/7 text-secondary">
-                    <div className="flex ">
+                    <div data-aos="zoom-in" className="flex ">
                       <dt className="flex-none">
                         <span className="sr-only">Address</span>
                       </dt>
@@ -42,7 +48,7 @@ export default function ContactUs() {
                         Chicago, IL 99191
                       </dd>
                     </div>
-                    <div className="flex ">
+                    <div className="flex" data-aos="zoom-in">
                       <dt className="flex-none">
                         <span className="sr-only">Telephone</span>
                       </dt>
@@ -55,7 +61,7 @@ export default function ContactUs() {
                         </a>
                       </dd>
                     </div>
-                    <div className="flex ">
+                    <div className="flex" data-aos="zoom-in">
                       <dt className="flex-none">
                         <span className="sr-only">Email</span>
                       </dt>
@@ -74,7 +80,7 @@ export default function ContactUs() {
               <form action="#" method="POST" className="px-6 py-10  md:py-14">
                 <div className="mx-auto max-w-xl  lg:max-w-lg">
                   <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                    <div>
+                    <div data-aos="fade-up">
                       <label
                         htmlFor="first-name"
                         className="block text-sm/6 font-semibold text-secondary"
@@ -91,7 +97,7 @@ export default function ContactUs() {
                         />
                       </div>
                     </div>
-                    <div>
+                    <div data-aos="fade-up">
                       <label
                         htmlFor="last-name"
                         className="block text-sm/6 font-semibold text-secondary"
@@ -108,7 +114,7 @@ export default function ContactUs() {
                         />
                       </div>
                     </div>
-                    <div className="sm:col-span-2">
+                    <div className="sm:col-span-2" data-aos="fade-up">
                       <label
                         htmlFor="email"
                         className="block text-sm/6 font-semibold text-secondary"
@@ -125,7 +131,7 @@ export default function ContactUs() {
                         />
                       </div>
                     </div>
-                    <div className="sm:col-span-2">
+                    <div className="sm:col-span-2" data-aos="fade-up">
                       <label
                         htmlFor="phone-number"
                         className="block text-sm/6 font-semibold text-secondary"
@@ -142,7 +148,7 @@ export default function ContactUs() {
                         />
                       </div>
                     </div>
-                    <div className="sm:col-span-2">
+                    <div className="sm:col-span-2" data-aos="fade-up">
                       <label
                         htmlFor="message"
                         className="block text-sm/6 font-semibold text-secondary"
@@ -160,7 +166,7 @@ export default function ContactUs() {
                       </div>
                     </div>
                   </div>
-                  <div className="mt-8 flex justify-end">
+                  <div data-aos="fade-up" className="mt-8 flex justify-end">
                     <PrimaryButton>Submit</PrimaryButton>
                   </div>
                 </div>

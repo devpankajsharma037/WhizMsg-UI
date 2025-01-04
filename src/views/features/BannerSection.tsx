@@ -8,25 +8,30 @@ const BannerSection = () => {
       <Container>
         <div className="py-14 sm:py-20 px-3">
           <div className="mx-auto text-center">
-            <div>
+            <div data-aos="fade-up">
               <p className="text-secondary font-medium text-center font-poppins">
                 #Best WhatsApp Chrome Extension
               </p>
+
+              <h2 className="text-[26px] sm:text-[35px] md:text-[40px] xl:text-[52px] font-bold sm:font-semibold font-plus text-center mb-4">
+                Tool That Works — No WhatsApp API, No Extra Cost, Just Results
+                🎯!
+              </h2>
+              <p className="max-w-[960px] mx-auto text-secondary mt-6 text-indigo-200">
+                Eliminate manual tasks and optimize your processes with our
+                WhatsApp Web automation solution. Save time, reduce errors, and
+                improve efficiency.
+              </p>
             </div>
-            <h2 className="text-[26px] sm:text-[35px] md:text-[40px] xl:text-[52px] font-bold sm:font-semibold font-plus text-center mb-4">
-              Tool That Works —No WhatsApp API, No Extra Cost, Just Results 🎯!
-            </h2>
-            <p className="max-w-[960px] mx-auto text-secondary mt-6 text-indigo-200">
-              IEliminate manual tasks and optimize your processes with our
-              WhatsApp Web automation solution. Save time, reduce errors, and
-              improve efficiency.
-            </p>
-            <div className="flex items-center justify-center flex-col sm:flex-row gap-5 pt-8">
+            <div
+              data-aos="zoom-in"
+              className="flex items-center justify-center flex-col sm:flex-row gap-5 pt-8"
+            >
               <PrimaryButton extraCss="px-5 flex items-center gap-2 font-semibold">
                 <ChargeIcon />
                 Install for Free
               </PrimaryButton>
-              <button className="font-medium flex items-center gap-2 py-3 px-6 rounded-[8px] font-poppins h-fit scale-1 hover:scale-[1.025] transition-all duration-300  text-primary bg-white bg-opacity-60 hover:bg-[#02914c] hover:text-white">
+              <button className="font-medium flex items-center gap-2 py-3 px-6 rounded-[8px] font-poppins h-fit scale-1 hover:scale-[1.025] transition-all duration-300 text-primary bg-white bg-opacity-60 hover:bg-[#02914c] hover:text-white">
                 See All Featured <ArrowUpRight />
               </button>
             </div>
