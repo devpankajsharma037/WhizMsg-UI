@@ -8,18 +8,21 @@ import Container from "../UI/Container";
 import logo from "@/assets/shared/logo.svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navigation = [
-  { name: "Features", href: "/" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Help", href: "/help" },
-  { name: "Guide", href: "/guide" },
-  { name: "Earn with Us", href: "#" },
-  { name: "Contact Us", href: "/contact" },
-];
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const pathname = usePathname();
+  const { t } = useTranslation();
+
+  const navigation = [
+    { name: t("layout.header.features"), href: "/" },
+    { name: t("layout.header.pricing"), href: "/pricing" },
+    { name: t("layout.header.help"), href: "/help" },
+    { name: t("layout.header.guide"), href: "/guide" },
+    { name: t("layout.header.earnWithUs"), href: "#" },
+    { name: t("layout.header.contactUs"), href: "/contact" },
+  ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -27,7 +30,7 @@ export default function Header() {
     <header className="bg-white">
       <Container>
         <nav className="flex items-center justify-between">
-          <div className="flex lg:flex-1">
+          <div className="flex">
             <Image alt="" src={logo} className="h-auto w-[90px]" />
           </div>
           <div className="flex lg:hidden">
@@ -39,7 +42,7 @@ export default function Header() {
               <HamburgerIcon />
             </button>
           </div>
-          <div className="hidden lg:flex lg:gap-x-12">
+          <div className="hidden lg:flex md:gap-x-8 xl:gap-x-12">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -52,9 +55,13 @@ export default function Header() {
               </Link>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <PrimaryButton>Install for Free</PrimaryButton>
+          <div className="hidden lg:flex gap-5 lg:justify-end items-center">
+            <PrimaryButton>{t("layout.common.installforFree")}</PrimaryButton>
+            <ChangeLanguage />
           </div>
+          {mobileMenuOpen && (
+            <div className="w-full h-full bg-black opacity-30 fixed z-10 top-0 left-0" />
+          )}
         </nav>
       </Container>
       {/* Mobile menu */}
@@ -94,10 +101,51 @@ export default function Header() {
                 </Link>
               ))}
             </div>
-            <PrimaryButton>Install for Free</PrimaryButton>
+            <PrimaryButton extraCss="w-full">Install for Free</PrimaryButton>
+            <ChangeLanguage />
           </div>
         </div>
       </div>
     </header>
   );
 }
+
+const ChangeLanguage = () => {
+  const { i18n } = useTranslation();
+  return (
+    <Menu
+      as="div"
+      className="relative block text-left  border-none mt-5 lg:mt-0"
+    >
+      <div>
+        <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-medium text-secondary shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+          Language
+        </MenuButton>
+      </div>
+
+      <MenuItems
+        transition
+        className="absolute right-0 z-10 mt-2 lg:w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in w-full"
+      >
+        <div className="py-1">
+          <MenuItem>
+            <span
+              onClick={() => i18n.changeLanguage("en")}
+              className="block cursor-pointer px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 data-[focus]:outline-none"
+            >
+              English
+            </span>
+          </MenuItem>
+          <MenuItem>
+            <span
+              onClick={() => i18n.changeLanguage("ar")}
+              className="block cursor-pointer px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 data-[focus]:outline-none"
+            >
+              Arabic
+            </span>
+          </MenuItem>
+        </div>
+      </MenuItems>
+    </Menu>
+  );
+};

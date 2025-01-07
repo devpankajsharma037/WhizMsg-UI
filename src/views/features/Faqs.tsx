@@ -1,28 +1,60 @@
+"use client";
+
 import { NextIcon } from "@/assets/icons";
-import { whizmsgFAQs } from "@/mock/faq";
 import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
+import { useTranslation } from "react-i18next";
 
 export default function FaqsSection() {
+  const { t } = useTranslation();
+
+  const whizmsgFAQs = [
+    {
+      question: t("whizmsgFAQs.1.question"),
+      description: t("whizmsgFAQs.1.description"),
+      type: "Others",
+    },
+    {
+      question: t("whizmsgFAQs.2.question"),
+      description: t("whizmsgFAQs.2.description"),
+      type: "Others",
+    },
+    {
+      question: t("whizmsgFAQs.3.question"),
+      description: t("whizmsgFAQs.3.description"),
+      type: "Others",
+    },
+    {
+      question: t("whizmsgFAQs.4.question"),
+      description: t("whizmsgFAQs.4.description"),
+      type: "Account",
+    },
+    {
+      question: t("whizmsgFAQs.5.question"),
+      description: t("whizmsgFAQs.5.description"),
+      type: "Others",
+    },
+  ];
+
   return (
     <div className="bg-white">
       <div data-aos="fade-right" className="lg:grid lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-5">
           <h2 className="text-secondary font-plus font-semibold xl:leading-[60px] text-2xl md:text-3xl xl:text-4xl my-2 mb-5">
-            Frequently asked questions
+            {t("faqSection.title")}
           </h2>
           <p className="font-poppins font-medium leading-7 text-sm text-secondary">
-            Can’t find the answer you’re looking for? Reach out to our{" "}
+            {t("faqSection.description")}{" "}
             <a
               href="#"
               className="font-semibold text-base xl:text-lg text-[#02914c]"
             >
-              customer support{" "}
+              {t("faqSection.customerSupport")}
             </a>
-            team.
+            .
           </p>
         </div>
         <div className="mt-10 lg:col-span-7 lg:mt-0">

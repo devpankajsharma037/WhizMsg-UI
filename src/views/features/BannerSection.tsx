@@ -1,8 +1,13 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
 import { ArrowUpRight, ChargeIcon } from "@/assets/icons";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Container from "@/components/UI/Container";
 
 const BannerSection = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-primary-light">
       <Container>
@@ -10,17 +15,14 @@ const BannerSection = () => {
           <div className="mx-auto text-center">
             <div data-aos="fade-up">
               <p className="text-secondary font-medium text-center font-poppins">
-                #Best WhatsApp Chrome Extension
+                {t("bannerSection.tagline")}
               </p>
 
               <h2 className="text-[26px] sm:text-[35px] md:text-[40px] xl:text-[52px] font-bold sm:font-semibold font-plus text-center mb-4">
-                Tool That Works — No WhatsApp API, No Extra Cost, Just Results
-                🎯!
+                {t("bannerSection.heading")}
               </h2>
               <p className="max-w-[960px] mx-auto text-secondary mt-6 text-indigo-200">
-                Eliminate manual tasks and optimize your processes with our
-                WhatsApp Web automation solution. Save time, reduce errors, and
-                improve efficiency.
+                {t("bannerSection.description")}
               </p>
             </div>
             <div
@@ -29,18 +31,19 @@ const BannerSection = () => {
             >
               <PrimaryButton extraCss="px-5 flex items-center gap-2 font-semibold">
                 <ChargeIcon />
-                Install for Free
+                {t("bannerSection.installButton.label")}
               </PrimaryButton>
               <button className="font-medium flex items-center gap-2 py-3 px-6 rounded-[8px] font-poppins h-fit scale-1 hover:scale-[1.025] transition-all duration-300 text-primary bg-white bg-opacity-60 hover:bg-[#02914c] hover:text-white">
-                See All Featured <ArrowUpRight />
+                {t("bannerSection.seeAllFeaturesButton.label")} <ArrowUpRight />
               </button>
             </div>
+            {/* Uncomment and refactor as needed */}
             {/* <div className="flex md:justify-end items-center md:items-start flex-col md:flex-row w-full gap-4 pb-8">
               <section>
                 <div style={{ transform: "none", height: "100%" }}>
                   <div className="bg-white bg-opacity-70 rounded-[30px] py-4 px-8 mx-3 w-fit">
                     <p className="font-medium text-xl text-primary font-plus">
-                      Export Contacts Easily
+                      {t("bannerSection.exportSection.heading")}
                     </p>
                     <div className="pl-3">
                       <div className="flex gap-2 items-center mt-2 font-plus cursor-pointer">
@@ -58,7 +61,7 @@ const BannerSection = () => {
                           src="/assets/chat.svg"
                         />
                         <p className="text-lg font-medium text-primary hover:text-secondary">
-                          From Chats
+                          {t("bannerSection.exportSection.options.fromChats")}
                         </p>
                       </div>
                       <div className="flex gap-2 items-center mt-2 font-plus cursor-pointer">
@@ -76,7 +79,7 @@ const BannerSection = () => {
                           src="/assets/group.svg"
                         />
                         <p className="text-lg font-medium text-primary hover:text-secondary">
-                          From Groups
+                          {t("bannerSection.exportSection.options.fromGroups")}
                         </p>
                       </div>
                       <div className="flex gap-2 items-center mt-2 font-plus cursor-pointer">
@@ -94,11 +97,11 @@ const BannerSection = () => {
                           src="/assets/label.svg"
                         />
                         <p className="text-lg font-medium text-primary hover:text-secondary">
-                          From Labels
+                          {t("bannerSection.exportSection.options.fromLabels")}
                         </p>
                       </div>
                       <div className="mt-2 font-plus text-primary text-lg">
-                        All saved &amp; Unsaved
+                        {t("bannerSection.exportSection.options.allSavedAndUnsaved")}
                       </div>
                     </div>
                   </div>
@@ -107,18 +110,7 @@ const BannerSection = () => {
 
               <div className="max-w-[400px] px-3 sm:p-0">
                 <div className="flex flex-wrap gap-2">
-                  {[
-                    "Message Templates",
-                    "Smart Replies",
-                    "Broadcasts",
-                    "Workflows",
-                    "Tools",
-                    "Power Buttons",
-                    "Privacy Features",
-                    "Contact Card",
-                    "Smart Inbox",
-                    "Labels",
-                  ].map((text) => (
+                  {t("bannerSection.features", { returnObjects: true }).map((text: string) => (
                     <section key={text}>
                       <div style={{ transform: "none", height: "100%" }}>
                         <CustomButton text={text} />
@@ -128,36 +120,34 @@ const BannerSection = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2 mt-3">
-                  {[
-                    { label: "Integrations", icon: null },
-                    { label: "Zappier", icon: "/assets/zappier.svg" },
-                    { label: "Chat GPT", icon: "/assets/chatgpt.svg" },
-                  ].map(({ label, icon }) => (
-                    <section key={label}>
-                      <div style={{ transform: "none", height: "100%" }}>
-                        <div className="flex items-center gap-2 bg-white py-1 px-2 rounded-md scale-1 hover:scale-[1.025] cursor-pointer transition-all">
-                          {icon && (
-                            <img
-                              alt="logo"
-                              loading="lazy"
-                              width="16"
-                              height="16"
-                              decoding="async"
-                              style={{
-                                color: "transparent",
-                                width: "16px",
-                                height: "16px",
-                              }}
-                              src={icon}
-                            />
-                          )}
-                          <p className="text-[#1D1D21] hover:text-secondary font-semibold font-plus">
-                            {label}
-                          </p>
+                  {t("bannerSection.integrations", { returnObjects: true }).map(
+                    ({ label, icon }: { label: string; icon: string | null }) => (
+                      <section key={label}>
+                        <div style={{ transform: "none", height: "100%" }}>
+                          <div className="flex items-center gap-2 bg-white py-1 px-2 rounded-md scale-1 hover:scale-[1.025] cursor-pointer transition-all">
+                            {icon && (
+                              <img
+                                alt="logo"
+                                loading="lazy"
+                                width="16"
+                                height="16"
+                                decoding="async"
+                                style={{
+                                  color: "transparent",
+                                  width: "16px",
+                                  height: "16px",
+                                }}
+                                src={icon}
+                              />
+                            )}
+                            <p className="text-[#1D1D21] hover:text-secondary font-semibold font-plus">
+                              {label}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </section>
-                  ))}
+                      </section>
+                    )
+                  )}
                 </div>
               </div>
             </div> */}
@@ -167,12 +157,5 @@ const BannerSection = () => {
     </div>
   );
 };
-// const CustomButton = ({ text }: { text: string }) => {
-//   return (
-//     <button className="relative py-1 px-5 text-[#323232] font-medium  overflow-hidden bg-white bg-opacity-70 rounded-full transition-all duration-400 ease-in-out  hover:scale-105 hover:text-white  before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#02914c] before:to-[#02914c] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-full hover:before:left-0">
-//       {text}
-//     </button>
-//   );
-// };
 
 export default BannerSection;

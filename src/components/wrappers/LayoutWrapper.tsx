@@ -5,6 +5,8 @@ import Footer from "../layout/Footer";
 import Header from "../layout/Header";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { I18nextProvider } from "react-i18next";
+import i18n from "@/utils/i18";
 
 export default function LayoutWrapper({
   children,
@@ -17,10 +19,10 @@ export default function LayoutWrapper({
     AOS.refresh();
   }, []);
   return (
-    <>
+    <I18nextProvider i18n={i18n}>
       <Header />
       {children}
       <Footer />
-    </>
+    </I18nextProvider>
   );
 }

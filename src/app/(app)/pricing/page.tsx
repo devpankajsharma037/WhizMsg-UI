@@ -1,28 +1,31 @@
 "use client";
 
 import React from "react";
-import { pricing, tableSections, tiers } from "../../../mock/pricing";
-import { CheckIcon, CrossIcon } from "@/assets/icons";
+import { CheckIcon } from "@/assets/icons";
 import Container from "@/components/UI/Container";
+import { useTranslation } from "react-i18next";
 
 export default function Pricing() {
+  const { t } = useTranslation();
+
+  const pricingTier = t("pricing.tiers", { returnObjects: true });
+
   return (
     <Container>
       <div className="mt-10 px-6 sm:mt-16 lg:px-8">
         <div data-aos="fade-up" className=" text-center">
           <h1 className="text-base/7 font-semibold text-secondary">
-            #Best WhatsApp Chrome Extension
+            {t("bannerSection.tagline")}
           </h1>
           <p className="mt-2 text-secondary text-5xl font-semibold tracking-tight text-secondary sm:text-6xl">
-            Perfect plans for your{" "}
-            <span className="text-primary">Business</span>
+            {t("pricing.tagline")}
           </p>
         </div>
         <p
           data-aos="fade-up"
           className="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-primary sm:text-xl/8"
         >
-          Find the subscription that makes the most sense for you or your team
+          {t("pricing.find")}
         </p>
         <div className="mt-16 flex justify-center">
           <fieldset aria-label="Payment frequency">
@@ -31,50 +34,52 @@ export default function Pricing() {
               className="w-52 rounded-full p-1  text-center font-semibold ring-1 ring-inset ring-[#3f4e41] transition-all duration-300"
             >
               <div className="cursor-pointer rounded-full px-4 py-2  text-secondary ">
-                Pricing
+                {t("pricing.pricing")}
               </div>
             </div>
           </fieldset>
         </div>
         <div className="isolate mx-auto mt-10 grid grid-cols-1 gap-8 md:max-w-2xl justify-center md:grid-cols-2 xl:mx-auto ">
-          {pricing.tiers.map((tier) => (
-            <div
-              data-aos="zoom-in"
-              key={tier.id}
-              className={`group shadow-lg rounded-3xl p-8 transition-all duration-300 ring-2 ring-[#3f4e41] hover:ring-[#02914c] hover:bg-[#02914c] hover:scale-105 hover:text-white`}
-            >
-              <h2
-                id={tier.id}
-                className={`text-2xl font-semibold group-hover:text-white text-gray-900`}
+          {pricingTier &&
+            Array.isArray(pricingTier) &&
+            pricingTier?.map((tier: any) => (
+              <div
+                data-aos="zoom-in"
+                key={tier.id}
+                className={`group shadow-lg rounded-3xl p-8 transition-all duration-300 ring-2 ring-[#3f4e41] hover:ring-[#02914c] hover:bg-[#02914c] hover:scale-105 hover:text-white`}
               >
-                {tier.name}
-              </h2>
-              <p className="mt-4 text-sm/6 group-hover:text-white text-gray-600">
-                {tier.description}
-              </p>
+                <h2
+                  id={tier.id}
+                  className={`text-2xl font-semibold group-hover:text-white text-gray-900`}
+                >
+                  {tier.name}
+                </h2>
+                <p className="mt-4 text-sm/6 group-hover:text-white text-gray-600">
+                  {tier.description}
+                </p>
 
-              <a
-                href={tier.href}
-                aria-describedby={tier.id}
-                className={`mt-6 block rounded-md px-3 py-2 text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
+                <a
+                  href={tier.href}
+                  aria-describedby={tier.id}
+                  className={`mt-6 block rounded-md px-3 py-2 text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
             border border-[#3f4e41] text-[#3f4e41] shadow-sm group-hover:bg-[#3f4e41] group-hover:text-white
         `}
-              >
-                Buy plan
-              </a>
-              <ul
-                role="list"
-                className="mt-8 space-y-3 text-sm/6 group-hover:text-white text-gray-600"
-              >
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex gap-x-3">
-                    <CheckIcon />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                >
+                  {t("pricing.buyPlan")}
+                </a>
+                <ul
+                  role="list"
+                  className="mt-8 space-y-3 text-sm/6 group-hover:text-white text-gray-600"
+                >
+                  {tier.features.map((feature: any) => (
+                    <li key={feature} className="flex gap-x-3">
+                      <CheckIcon />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
         </div>
       </div>
       {/* <div className="mt-8 md:mt-12 xl:mt-16 space-y-8 md:space-y-12 xl:space-y-16 w-full overflow-x-auto">

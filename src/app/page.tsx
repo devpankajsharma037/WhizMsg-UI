@@ -1,11 +1,74 @@
+"use client";
+
 // custom imports
 import Container from "@/components/UI/Container";
-import { features } from "@/mock/home";
 import BannerSection from "@/views/features/BannerSection";
 import CustomerReview from "@/views/features/CustomerReview";
 import FaqsSection from "@/views/features/Faqs";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      id: 1,
+      title: t("features.1.title"),
+      status: t("features.1.status"),
+      icon: "⚡",
+      description: t("features.1.description"),
+    },
+    {
+      id: 2,
+      title: t("features.2.title"),
+      status: t("features.2.status"),
+      icon: "👌",
+      description: t("features.2.description"),
+    },
+    {
+      id: 3,
+      title: t("features.3.title"),
+      status: t("features.3.status"),
+      icon: "🔒",
+      description: t("features.3.description"),
+    },
+    {
+      id: 4,
+      title: t("features.4.title"),
+      status: t("features.4.status"),
+      icon: "⏳",
+      description: t("features.4.description"),
+    },
+    {
+      id: 5,
+      title: t("features.5.title"),
+      status: t("features.5.status"),
+      icon: "📋",
+      description: t("features.5.description"),
+    },
+    {
+      id: 6,
+      title: t("features.6.title"),
+      status: t("features.6.status"),
+      icon: "📣",
+      description: t("features.6.description"),
+    },
+    {
+      id: 7,
+      title: t("features.7.title"),
+      status: t("features.7.status"),
+      icon: "⚡",
+      description: t("features.7.description"),
+    },
+    {
+      id: 8,
+      title: t("features.8.title"),
+      status: t("features.8.status"),
+      icon: "📂",
+      description: t("features.8.description"),
+    },
+  ];
+
   return (
     <div className="">
       <BannerSection />
@@ -91,20 +154,19 @@ export default function Home() {
         <Container>
           <section className="pt-10 md:pt-14 px-3">
             <div className="mx-auto text-center">
-              <p className="text-primary font-medium text-left  font-poppins">
-                #Best WhatsApp Chrome Extension
+              <p className="text-primary font-medium text-left font-poppins">
+                {t("bannerSection.newContent.introTagline")}
               </p>
             </div>
           </section>
           <section>
             <h2 className="text-secondary font-plus font-semibold xl:leading-[60px] text-2xl md:text-3xl xl:text-4xl mt-2 mb-1">
-              Improve productivity 🎯 and save time with WAWCD
+              {t("bannerSection.newContent.introHeading")}
             </h2>
           </section>
           <section>
             <p className="font-poppins font-medium leading-7 text-sm text-secondary">
-              {`The WAWCD WhatsApp Chrome Extension helps businesses or
-              individuals to automate WhatsApp. Here's how it typically works:`}
+              {t("bannerSection.newContent.introDescription")}
             </p>
           </section>
           <section className="grid grid-cols-1 md:grid-cols-2 my-10 sm:my-12 gap-5">
@@ -122,7 +184,7 @@ export default function Home() {
                     >
                       <h3 className="flex flex-col sm:flex-row sm:items-center group-hover:text-white text-base md:text-xl">
                         <p className="whitespace-nowrap font-bold mr-1">
-                          0{elm?.id}
+                          {elm?.id}
                         </p>
                         <div className="flex items-center">
                           <p className="font-extrabold">{elm?.title}</p>
