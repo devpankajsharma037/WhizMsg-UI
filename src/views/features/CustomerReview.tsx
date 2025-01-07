@@ -4,11 +4,54 @@ import React from "react";
 import { StarIcon } from "@/assets/icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { reviews } from "@/mock/home";
 import { Autoplay } from "swiper/modules";
-import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const CustomerReview = () => {
+  const { t } = useTranslation();
+
+  const reviews = [
+    {
+      id: 1,
+      rating: 5,
+      content: t("reviews.1.content"),
+      date: "July 16, 2021",
+      datetime: "2021-07-16",
+      author: t("reviews.1.author"),
+      avatarSrc:
+        "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
+    },
+    {
+      id: 2,
+      rating: 5,
+      content: t("reviews.2.content"),
+      date: "July 12, 2021",
+      datetime: "2021-07-12",
+      author: t("reviews.2.author"),
+      avatarSrc:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
+    },
+    {
+      id: 3,
+      rating: 5,
+      content: t("reviews.3.content"),
+      date: "July 16, 2021",
+      datetime: "2021-07-16",
+      author: t("reviews.3.author"),
+      avatarSrc:
+        "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
+    },
+    {
+      id: 4,
+      rating: 5,
+      content: t("reviews.4.content"),
+      date: "July 12, 2021",
+      datetime: "2021-07-12",
+      author: t("reviews.4.author"),
+      avatarSrc:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
+    },
+  ];
   return (
     <div data-aos="fade-up" className="">
       <h2 className="text-secondary font-plus font-semibold xl:leading-[60px] text-2xl md:text-3xl xl:text-4xl my-2 mb-5">

@@ -1,4 +1,7 @@
+"use client";
+
 import Container from "@/components/UI/Container";
+import { useTranslation } from "react-i18next";
 
 const posts = [
   {
@@ -42,6 +45,8 @@ const posts = [
 ];
 
 export default function Guide() {
+  const { t } = useTranslation();
+
   return (
     <div className="mt-10 px-6 sm:mt-16 lg:px-8">
       <Container>
@@ -50,7 +55,7 @@ export default function Guide() {
             data-aos="zoom-in-up"
             className="text-4xl md:text-5xl text-center font-semibold tracking-tight text-secondary xl:text-7xl"
           >
-            Guide
+            {t("guide.title")}
           </h1>
           <div className="mt-10 lg:mt-14 transform: none; height: 100%;">
             {posts.map((post) => (
@@ -70,7 +75,7 @@ export default function Guide() {
                       />
                     </div>
                     <div className="flex flex-col justify-between md:py-4">
-                      <p className="text-gray-600">Guide</p>
+                      <p className="text-gray-600">{t("guide.title")}</p>
                       <h2 className="text-2xl xl:text-4xl text-black xl:leading-[50px] font-poppins font-semibold hover:text-secondary my-4">
                         {post.title}
                       </h2>

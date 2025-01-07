@@ -1,18 +1,21 @@
+"use client";
+
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Container from "@/components/UI/Container";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ContactUs() {
+  const { t } = useTranslation();
   return (
     <div>
       <div className="relative isolate overflow-hidden bg-primary-light py-14 sm:py-20 px-3">
         <div data-aos="zoom-in" className="mx-auto  text-center">
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-secondary xl:text-7xl">
-            Contact Us!
+            {t("contactUs.title")}
           </h2>
           <p className="mt-4 md:mt-6 xl:mt-8 font-medium text-balance text-sm sm:text-base">
-            {`Got questions or issues? We're here to help! Reach out for platform
-            guidance or sales inquiries. Message us now!`}
+            {t("contactUs.description")}
           </p>
         </div>
       </div>
@@ -27,15 +30,13 @@ export default function ContactUs() {
                     data-aos="fade-up"
                     className="text-pretty text-2xl font-semibold tracking-tight text-secondary  sm:text-3xl"
                   >
-                    Get in touch
+                    {t("contactUs.form.heading")}
                   </h2>
                   <p
                     data-aos="zoom-in"
                     className="mt-6 text-base md:text-lg/8 text-secondary"
                   >
-                    Proin volutpat consequat porttitor cras nullam gravida at.
-                    Orci molestie a eu arcu. Sed ut tincidunt integer elementum
-                    id sem. Arcu sed malesuada et magna.
+                    {t("contactUs.form.description")}
                   </p>
                   <dl className="mt-10 space-y-4 text-base/7 text-secondary">
                     <div data-aos="zoom-in" className="flex ">
@@ -85,7 +86,7 @@ export default function ContactUs() {
                         htmlFor="first-name"
                         className="block text-sm/6 font-semibold text-secondary"
                       >
-                        First name
+                        {t("contactUs.form.firstName.label")}
                       </label>
                       <div className="mt-2.5">
                         <input
@@ -102,7 +103,7 @@ export default function ContactUs() {
                         htmlFor="last-name"
                         className="block text-sm/6 font-semibold text-secondary"
                       >
-                        Last name
+                        {t("contactUs.form.lastName.label")}
                       </label>
                       <div className="mt-2.5">
                         <input
@@ -119,7 +120,7 @@ export default function ContactUs() {
                         htmlFor="email"
                         className="block text-sm/6 font-semibold text-secondary"
                       >
-                        Email
+                        {t("contactUs.form.email.label")}
                       </label>
                       <div className="mt-2.5">
                         <input
@@ -136,7 +137,7 @@ export default function ContactUs() {
                         htmlFor="phone-number"
                         className="block text-sm/6 font-semibold text-secondary"
                       >
-                        Phone number
+                        {t("contactUs.form.phoneNumber.label")}
                       </label>
                       <div className="mt-2.5">
                         <input
@@ -153,7 +154,7 @@ export default function ContactUs() {
                         htmlFor="message"
                         className="block text-sm/6 font-semibold text-secondary"
                       >
-                        Message
+                        {t("contactUs.form.message.label")}
                       </label>
                       <div className="mt-2.5">
                         <textarea
@@ -167,7 +168,7 @@ export default function ContactUs() {
                     </div>
                   </div>
                   <div data-aos="fade-up" className="mt-8 flex justify-end">
-                    <PrimaryButton>Submit</PrimaryButton>
+                    <PrimaryButton>{t("contactUs.form.submit")}</PrimaryButton>
                   </div>
                 </div>
               </form>

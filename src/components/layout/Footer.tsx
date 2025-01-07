@@ -1,13 +1,61 @@
+"use client";
+
 import React from "react";
 import Container from "../UI/Container";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 import Image from "next/image";
 import logo from "@/assets/shared/logo.svg";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { ChargeIcon } from "@/assets/icons";
-import Link from "next/link";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
+  const navigation = [
+    {
+      heading: t("layout.footer.navigation.company.heading"),
+      links: [
+        { name: t("layout.footer.navigation.company.links.home"), href: "/" },
+        {
+          name: t("layout.footer.navigation.company.links.testimonials"),
+          href: "/testimonials",
+        },
+        {
+          name: t("layout.footer.navigation.company.links.whyWHIZMSG"),
+          href: "/why-whizmsg",
+        },
+      ],
+    },
+    {
+      heading: t("layout.footer.navigation.support.heading"),
+      links: [
+        {
+          name: t("layout.footer.navigation.support.links.contactUs"),
+          href: "/contact",
+        },
+        {
+          name: t("layout.footer.navigation.support.links.legal"),
+          href: "/legal",
+        },
+      ],
+    },
+    {
+      heading: t("layout.footer.navigation.resources.heading"),
+      links: [
+        {
+          name: t("layout.footer.navigation.resources.links.help"),
+          href: "/help",
+        },
+        {
+          name: t("layout.footer.navigation.resources.links.userGuide"),
+          href: "/guide",
+        },
+      ],
+    },
+  ];
+
   return (
     <footer className="bg-white mb-8">
       <Container>
@@ -16,20 +64,16 @@ const Footer = () => {
             <section data-aos="fade-up">
               <div style={{ opacity: 1, transform: "none" }}>
                 <h3 className="font-poppins font-semibold text-3xl sm:text-[34px] leading-[50px] text-primary md:w-[72%]">
-                  Excited to take your business to the next level with WHIZMSG?
+                  {t("layout.footer.title")}
                   🎉
                 </h3>
               </div>
             </section>
             <section data-aos="fade-up">
               <div style={{ opacity: 1, transform: "none" }}>
-                <a
-                  href="https:chromewebstore.google.com/detail/wawcd-chatgpt-powered-wha/gbbpfmmjcaakdmhlnjfdlhlehoeikbic"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="#" target="_blank" rel="noopener noreferrer">
                   <PrimaryButton extraCss="flex items-center gap-2">
-                    <ChargeIcon /> Install For Free
+                    <ChargeIcon /> {t("layout.common.installforFree")}
                   </PrimaryButton>
                 </a>
               </div>
@@ -43,7 +87,7 @@ const Footer = () => {
             </a>
             <div className="mb-5">
               <p className="text-base text-blck">
-                &copy; {new Date().getFullYear()} WHIZMSG. All rights reserved.
+                &copy; {new Date().getFullYear()} {t("layout.footer.copyright")}
               </p>
             </div>
             <ul className="flex justify-start gap-6 ">
@@ -142,35 +186,5 @@ const Footer = () => {
     </footer>
   );
 };
-
-const navigation = [
-  {
-    heading: "Company",
-    links: [
-      { name: "Home", href: "/" },
-      { name: "Testimonials", href: "/#testimonials" },
-      { name: "Why WAWCD", href: "/why-wawcd" },
-    ],
-  },
-  {
-    heading: "Support",
-    links: [
-      { name: "Contact us", href: "/contact" },
-      { name: "Changelog", href: "/changelog" },
-      { name: "Legal", href: "/legal" },
-    ],
-  },
-  {
-    heading: "Resources",
-    links: [
-      { name: "Help", href: "/help" },
-      { name: "User Guide", href: "/user-guide" },
-    ],
-  },
-  // {
-  //   heading: "Collaboration",
-  //   links: [{ name: "Earn with Us", href: "/earn-with-us" }],
-  // },
-];
 
 export default Footer;

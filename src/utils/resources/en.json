@@ -1,0 +1,341 @@
+{
+  "layout": {
+    "header": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "help": "Help",
+      "guide": "Guide",
+      "earnWithUs": "Earn with Us",
+      "contactUs": "Contact Us"
+    },
+    "common": {
+      "installforFree": "Install For Free"
+    },
+    "footer": {
+      "title": "Excited to take your business to the next level with WHIZMSG?",
+      "copyright": "WHIZMSG. All rights reserved.",
+      "navigation": {
+        "company": {
+          "heading": "Company",
+          "links": {
+            "home": "Home",
+            "testimonials": "Testimonials",
+            "whyWHIZMSG": "Why WHIZMSG"
+          }
+        },
+        "support": {
+          "heading": "Support",
+          "links": {
+            "contactUs": "Contact us",
+            "legal": "Legal"
+          }
+        },
+        "resources": {
+          "heading": "Resources",
+          "links": {
+            "help": "Help",
+            "userGuide": "User Guide"
+          }
+        }
+      }
+    }
+  },
+  "bannerSection": {
+    "tagline": "#Best WhatsApp Chrome Extension",
+    "heading": "Tool That Works — No WhatsApp API, No Extra Cost, Just Results 🎯!",
+    "description": "Eliminate manual tasks and optimize your processes with our WhatsApp Web automation solution. Save time, reduce errors, and improve efficiency.",
+    "installButton": {
+      "label": "Install for Free"
+    },
+    "seeAllFeaturesButton": {
+      "label": "See All Featured"
+    },
+    "newContent": {
+      "introTagline": "#Best WhatsApp Chrome Extension",
+      "introHeading": "Improve productivity 🎯 and save time with WHIZMSG",
+      "introDescription": "The WHIZMSG WhatsApp Chrome Extension helps businesses or individuals to automate WhatsApp. Here's how it typically works:"
+    }
+  },
+  "features": {
+    "1": {
+      "title": "Smart Inbox",
+      "status": "Coming Soon",
+      "icon": "⚡",
+      "description": "Our WhatsApp extension now lets you create and save your message templates, simplifying the process of sending quick and efficient replies."
+    },
+    "2": {
+      "title": "Start New Chat",
+      "status": "Easy and Convenient",
+      "icon": "👌",
+      "description": "Chat with unsaved numbers on WhatsApp."
+    },
+    "3": {
+      "title": "Privacy Features",
+      "status": "Secure Chats",
+      "icon": "🔒",
+      "description": "Our WhatsApp Web privacy extension features include blurred chats, locked pictures, and other protective measures."
+    },
+    "4": {
+      "title": "Message Template",
+      "status": "Time Saving",
+      "icon": "⏳",
+      "description": "Apart from contact synchronization, you can use this feature to save your time from repetitive typing and streamline your responses using our message templates."
+    },
+    "5": {
+      "title": "Copy Message",
+      "status": "Convenient",
+      "icon": "📋",
+      "description": "Easily copy WhatsApp messages by clicking on the copy icon, then share them with anyone you like."
+    },
+    "6": {
+      "title": "WhatsApp Bulk Messages",
+      "status": "Low Cost and Efficient",
+      "icon": "📣",
+      "description": "Our WhatsApp extension offers a bulk messaging and broadcasting feature where you can send a message to a large number of people with a single click."
+    },
+    "7": {
+      "title": "Import Contacts",
+      "status": "One Click",
+      "icon": "⚡",
+      "description": "Do you have a contact list in a CSV/Excel file? Easily import it with our tool and begin connecting with your customers on WhatsApp."
+    },
+    "8": {
+      "title": "Contact Saver for WhatsApp",
+      "status": "Maximize Impact",
+      "icon": "📂",
+      "description": "Export all your WhatsApp contacts from chats, groups, or labels, and sync WhatsApp contacts with your phone. This feature helps you with backup and maximizes your WhatsApp status viewership."
+    }
+  },
+  "reviews": {
+    "1": {
+      "rating": 5,
+      "content": "<p>This icon pack is just what I need for my latest project. There's an icon for just about anything I could ever need. Love the playful look!</p>",
+      "date": "July 16, 2021",
+      "datetime": "2021-07-16",
+      "author": "Emily Selman",
+      "avatarSrc": "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+    },
+    "2": {
+      "rating": 5,
+      "content": "<p>Blown away by how polished this icon pack is. Everything looks so consistent and each SVG is optimized out of the box so I can use it directly with confidence. It would take me several hours to create a single icon this good, so it's a steal at this price.</p>",
+      "date": "July 12, 2021",
+      "datetime": "2021-07-12",
+      "author": "Hector Gibbons",
+      "avatarSrc": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+    },
+    "3": {
+      "rating": 5,
+      "content": "<p>This icon pack is just what I need for my latest project. There's an icon for just about anything I could ever need. Love the playful look!</p>",
+      "date": "July 16, 2021",
+      "datetime": "2021-07-16",
+      "author": "Emily Selman",
+      "avatarSrc": "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+    },
+    "4": {
+      "rating": 5,
+      "content": "<p>Blown away by how polished this icon pack is. Everything looks so consistent and each SVG is optimized out of the box so I can use it directly with confidence. It would take me several hours to create a single icon this good, so it's a steal at this price.</p>",
+      "date": "July 12, 2021",
+      "datetime": "2021-07-12",
+      "author": "Hector Gibbons",
+      "avatarSrc": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+    }
+  },
+  "whizmsgFAQs": {
+    "1": {
+      "question": "Is WHIZMSG a CRM?",
+      "description": "WHIZMSG is not a traditional CRM but offers tools to manage WhatsApp communication effectively."
+    },
+    "2": {
+      "question": "Is there a way to automate certain tasks with the WHIZMSG Chrome Extension?",
+      "description": "Yes, WHIZMSG Chrome Extension supports task automation for WhatsApp, including scheduling messages and broadcasting."
+    },
+    "3": {
+      "question": "Why choose WHIZMSG?",
+      "description": "WHIZMSG simplifies WhatsApp communication with features like automation, broadcasting, and integration with WhatsApp APIs."
+    },
+    "4": {
+      "question": "Can I integrate my WhatsApp API number?",
+      "description": "Yes, WHIZMSG supports integration with WhatsApp API numbers for advanced messaging capabilities."
+    },
+    "5": {
+      "question": "How to remove WHIZMSG from my WhatsApp?",
+      "description": "To remove WHIZMSG, uninstall the Chrome Extension or disable its integration from your WhatsApp settings."
+    },
+    "6": {
+      "question": "Can WHIZMSG support WhatsApp on mobile?",
+      "description": "WHIZMSG is designed for the desktop and requires a Chrome browser, but messages sent will sync with WhatsApp on mobile."
+    },
+    "7": {
+      "question": "Does WHIZMSG work offline?",
+      "description": "WHIZMSG requires an internet connection to send and receive messages."
+    },
+    "8": {
+      "question": "How does Broadcasting work?",
+      "description": "Broadcasting in WHIZMSG allows you to send messages to multiple recipients simultaneously, even if they haven't saved your number."
+    },
+    "9": {
+      "question": "How can I send a WhatsApp broadcast to users who haven't saved my number?",
+      "description": "WHIZMSG enables broadcasting without requiring recipients to save your number, provided you comply with WhatsApp's policies."
+    },
+    "10": {
+      "question": "How do I create an account to use the WHIZMSG Chrome Extension?",
+      "description": "Sign up on the WHIZMSG platform and log in using your credentials to use the Chrome Extension."
+    },
+    "11": {
+      "question": "Is it safe to send broadcasting messages to multiple users?",
+      "description": "Yes, it is safe if you adhere to WhatsApp's guidelines to avoid account restrictions."
+    },
+    "12": {
+      "question": "How can I upgrade my account to access premium features in the WHIZMSG Chrome Extension?",
+      "description": "Upgrade your account via the WHIZMSG website to unlock premium features like advanced broadcasting and analytics."
+    },
+    "13": {
+      "question": "Can I use multiple numbers with the same WHIZMSG Chrome Extension account?",
+      "description": "WHIZMSG supports multiple numbers for a single account, subject to the subscription plan."
+    },
+    "14": {
+      "question": "How to cancel WHIZMSG Subscription?",
+      "description": "Cancel your subscription via the account settings on the WHIZMSG website or contact support for assistance."
+    },
+    "15": {
+      "question": "Is there a fee associated with using the WHIZMSG Chrome Extension?",
+      "description": "The basic version is free, but premium features are available for a subscription fee."
+    },
+    "16": {
+      "question": "How do I download WhatsApp contacts using the WHIZMSG Chrome Extension?",
+      "description": "WHIZMSG allows you to export WhatsApp contacts directly to a file from the Chrome Extension."
+    },
+    "17": {
+      "question": "Can I customize the workflow of the WHIZMSG Chrome Extension to suit my needs?",
+      "description": "Yes, WHIZMSG offers workflow customization options to streamline your tasks."
+    },
+    "18": {
+      "question": "What is WHIZMSG?",
+      "description": "WHIZMSG is a Chrome Extension that enhances WhatsApp communication with features like automation and broadcasting."
+    },
+    "19": {
+      "question": "Can I use my regular WhatsApp number for WHIZMSG?",
+      "description": "Yes, you can use your regular WhatsApp number with WHIZMSG for messaging and broadcasting."
+    },
+    "20": {
+      "question": "How does the premium WHIZMSG account work?",
+      "description": "A premium WHIZMSG account unlocks advanced tools such as analytics, API integration, and extended broadcasting limits."
+    },
+    "21": {
+      "question": "Can I change WhatsApp numbers on WHIZMSG whenever I want to?",
+      "description": "Yes, WHIZMSG allows you to switch WhatsApp numbers without restrictions."
+    },
+    "22": {
+      "question": "What is the process for requesting a refund for the WHIZMSG Chrome Extension?",
+      "description": "Contact WHIZMSG support to request a refund. Refunds are subject to the terms and conditions of your subscription."
+    },
+    "23": {
+      "question": "Will scheduled broadcasting work offline?",
+      "description": "No, scheduled broadcasting requires an active internet connection to function."
+    },
+    "24": {
+      "question": "Can I use WHIZMSG on multiple devices or tabs?",
+      "description": "Yes, WHIZMSG supports usage on multiple devices or tabs as long as you are logged into your account."
+    }
+  },
+  "faq_section": {
+    "title": "Frequently asked questions",
+    "description": "Can’t find the answer you’re looking for? Reach out to our  team.",
+    "customerSupport": "customer support"
+  },
+  "helpSection": {
+    "title": "Help",
+    "description": "Have any questions? We’re here to assist you.",
+    "placeholder": "Search"
+  },
+  "pricing": {
+    "tagline": "Perfect plans for your Business",
+    "find": "Find the subscription that makes the most sense for you or your team",
+    "pricing": "Pricing",
+    "buyPlan": "Buy Plan",
+    "tiers": [
+      {
+        "name": "Free",
+        "id": "tier-free",
+        "href": "#",
+        "price": { "monthly": "$0.00", "annually": "$0.00" },
+        "description": "Perfect for individual and small business owners.",
+        "features": [
+          "Privacy Features",
+          "Start New Chat",
+          "Copy Message",
+          "2 Templates (Text only)",
+          "Unlimited Broadcasting with Branding",
+          "Quick Audience",
+          "Chat Link Generator",
+          "Install for Free"
+        ]
+      },
+      {
+        "name": "Basic",
+        "id": "tier-basic",
+        "href": "#",
+        "price": { "monthly": "$7.99", "annually": "$79.99" },
+        "description": "Perfect for individuals, primarily for saving WhatsApp contacts.",
+        "features": [
+          "Export Contacts",
+          "Privacy Features",
+          "Start New Chat",
+          "Copy Message",
+          "5 Templates",
+          "2 Workflows",
+          "500 Audience",
+          "Unlimited Broadcasts",
+          "Schedule Broadcasting",
+          "Broadcasting in WhatsApp Groups",
+          "Personalised Broadcasting",
+          "Broadcasting Analytics"
+        ]
+      }
+    ]
+  },
+  "guide": {
+    "title": "Guide"
+  },
+  "contactUs": {
+    "title": "Contact Us",
+    "description": "Got questions or issues? We're here to help! Reach out for platform guidance or sales inquiries. Message us now!",
+    "form": {
+      "heading": "Get in touch",
+      "description": "Proin volutpat consequat porttitor cras nullam gravida at. Orci molestie a eu arcu. Sed ut tincidunt integer elementum id sem. Arcu sed malesuada et magna.",
+      "firstName": {
+        "label": "First Name"
+      },
+      "lastName": {
+        "label": "Last Name"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "phoneNumber": {
+        "label": "Phone Number"
+      },
+      "message": {
+        "label": "Message"
+      },
+      "submit": "Submit"
+    }
+  },
+  "testimonial": {
+    "title": "Testimonials",
+    "description": "We have worked with thousands of amazing people"
+  },
+  "whyWhizMsg": {
+    "title": "Why WHIZMSG",
+    "description": "Have any questions? We’re here to assist you.",
+    "reasons": {
+      "title": "10 reasons",
+      "secondTitle": "why WHIZMSG",
+      "description": "Can’t find the answer you’re looking for? Reach out to our",
+      "1": {
+        "title": "Insights",
+        "description": "The key to any marketing is analytics. Every action you perform needs to be tracked to understand user behavior. WHIZMSG enables analytics within the broadcasting and export features, allowing you to see the effectiveness of your broadcasts and identify chats with no user interaction."
+      }
+    }
+  }
+}
