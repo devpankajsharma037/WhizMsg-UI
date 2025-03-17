@@ -6,23 +6,6 @@ export const pricing = {
   ],
   tiers: [
     {
-      name: "Free",
-      id: "tier-free",
-      href: "#",
-      price: { monthly: "$0.00", annually: "$0.00" },
-      description: "Perfect for individual and small business owners.",
-      features: [
-        "Privacy Features",
-        "Start New Chat",
-        "Copy Message",
-        "2 Templates (Text only)",
-        "Unlimited Broadcasting with Branding",
-        "Quick Audience",
-        "Chat Link Generator",
-        "Install for Free",
-      ],
-    },
-    {
       name: "Basic",
       id: "tier-basic",
       href: "#",

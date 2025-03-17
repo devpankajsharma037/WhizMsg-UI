@@ -9,7 +9,9 @@
       "contactUs": "Contact Us"
     },
     "common": {
-      "installforFree": "Install For Free"
+      "installforFree": "Install For Free",
+      "login": "Login",
+      "signUp": "Sign Up"
     },
     "footer": {
       "title": "Excited to take your business to the next level with WHIZMSG?",
@@ -255,25 +257,8 @@
     "buyPlan": "Buy Plan",
     "tiers": [
       {
-        "name": "Free",
-        "id": "tier-free",
-        "href": "#",
-        "price": { "monthly": "$0.00", "annually": "$0.00" },
-        "description": "Perfect for individual and small business owners.",
-        "features": [
-          "Privacy Features",
-          "Start New Chat",
-          "Copy Message",
-          "2 Templates (Text only)",
-          "Unlimited Broadcasting with Branding",
-          "Quick Audience",
-          "Chat Link Generator",
-          "Install for Free"
-        ]
-      },
-      {
         "name": "Basic",
-        "id": "tier-basic",
+        "id": "price_1R1mnISIHzj9QHGL2e4nljt8",
         "href": "#",
         "price": { "monthly": "$7.99", "annually": "$79.99" },
         "description": "Perfect for individuals, primarily for saving WhatsApp contacts.",
