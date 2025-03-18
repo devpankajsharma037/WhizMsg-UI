@@ -1,54 +1,58 @@
 import { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import PrimaryButton from "../buttons/PrimaryButton";
 import CustomModal from "../UI/CustomModal";
 import SignUp from "./Signup";
+import { useAuthStore } from "@/store/useAuthStore";
+import { showErrorToast, showSuccessToast } from "@/utils/toast";
 
 type LoginProps = {
   open: boolean;
   setOpen: (open: boolean) => void;
-  setIsLoggedIn: any;
 };
 
-const Login = ({ open, setOpen, setIsLoggedIn }: LoginProps) => {
+const schema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup.string().required("Password is required"),
+});
+
+const Login = ({ open, setOpen }: LoginProps) => {
   const [signUpModal, setSignUpModal] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const { setUser } = useAuthStore();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async (data: { email: string; password: string }) => {
     setLoading(true);
 
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/signin/`,
-        formData
+        data
       );
       const { access, refresh } = response.data.token;
       const { email } = response.data.info;
-      Cookies.set("access_token", access, { secure: true, sameSite: "Strict" });
-      Cookies.set("refresh_token", refresh, {
-        secure: true,
-        sameSite: "Strict",
-      });
-      Cookies.set("user_email", email, { secure: true, sameSite: "Strict" });
+      setUser({ accessToken: access, refreshToken: refresh, email });
       setOpen(false);
-      setIsLoggedIn(true);
+      reset();
+      showSuccessToast("Login successful");
     } catch (err: any) {
-      setError(err.response?.data?.message || "Something went wrong");
+      showErrorToast(
+        err?.response?.data?.message?.non_field_errors[0] ||
+          "Error While Login! Please try again later"
+      );
     } finally {
       setLoading(false);
     }
@@ -61,7 +65,7 @@ const Login = ({ open, setOpen, setIsLoggedIn }: LoginProps) => {
           Login to your account
         </h2>
         <div className="mt-7 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
@@ -72,14 +76,18 @@ const Login = ({ open, setOpen, setIsLoggedIn }: LoginProps) => {
               <div className="mt-2">
                 <input
                   id="email"
-                  name="email"
                   type="email"
-                  value={formData.email}
-                  onChange={handleChange}
                   autoComplete="off"
-                  required
-                  className="block w-full rounded-md border px-3 py-1.5 text-secondary shadow-sm placeholder:text-gray-400"
+                  {...register("email")}
+                  className={`block w-full rounded-md border px-3 py-1.5 text-secondary shadow-sm placeholder:text-gray-400 ${
+                    errors.email ? "border-red-500" : ""
+                  }`}
                 />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -100,14 +108,18 @@ const Login = ({ open, setOpen, setIsLoggedIn }: LoginProps) => {
               <div className="mt-2">
                 <input
                   id="password"
-                  name="password"
                   type="password"
-                  value={formData.password}
-                  onChange={handleChange}
                   autoComplete="off"
-                  required
-                  className="block w-full rounded-md border px-3 py-1.5 text-secondary shadow-sm placeholder:text-gray-400"
+                  {...register("password")}
+                  className={`block w-full rounded-md border px-3 py-1.5 text-secondary shadow-sm placeholder:text-gray-400 ${
+                    errors.password ? "border-red-500" : ""
+                  }`}
                 />
+                {errors.password && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {errors.password.message}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -117,6 +129,7 @@ const Login = ({ open, setOpen, setIsLoggedIn }: LoginProps) => {
               </PrimaryButton>
             </div>
           </form>
+
           <p className="mt-5 text-center text-sm text-secondary">
             Not a member?{" "}
             <span
@@ -136,7 +149,6 @@ const Login = ({ open, setOpen, setIsLoggedIn }: LoginProps) => {
         open={signUpModal}
         setOpen={setSignUpModal}
         setLoginOpen={setOpen}
-        setIsLoggedIn={setIsLoggedIn}
       />
     </>
   );

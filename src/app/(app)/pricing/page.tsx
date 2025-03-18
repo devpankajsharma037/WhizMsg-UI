@@ -1,19 +1,47 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CheckIcon } from "@/assets/icons";
 import Container from "@/components/UI/Container";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { useAuthStore } from "@/store/useAuthStore";
 
 export default function Pricing() {
   const { t } = useTranslation();
 
+  const { user } = useAuthStore();
+
   const pricingTier = t("pricing.tiers", { returnObjects: true });
 
+  const [pricingTiers, setPricingTiers] = useState<any>("");
+
+  useEffect(() => {
+    const fetchPricingTiers = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v3/info/`,
+          {
+            headers: {
+              Authorization: `Bearer ${user?.accessToken}`,
+            },
+          }
+        );
+        setPricingTiers(response.data);
+      } catch (error: any) {
+        console.error(
+          "Failed to fetch pricing info:",
+          error.response?.data?.message || "Something went wrong"
+        );
+      }
+    };
+    if (user?.accessToken) {
+      fetchPricingTiers();
+    }
+  }, []);
+
   const purchasePlan = async (id: string) => {
-    const token = Cookies.get("access_token");
+    const token = user?.accessToken;
 
     if (!token) {
       console.error("Access token is missing");
@@ -31,7 +59,6 @@ export default function Pricing() {
         }
       );
       window.location.href = response?.data?.checkout_url;
-      // Handle success (e.g., redirect, show message, etc.)
     } catch (error: any) {
       console.error(
         "Checkout failed:",
@@ -39,6 +66,8 @@ export default function Pricing() {
       );
     }
   };
+
+  console.log(pricingTiers);
 
   return (
     <Container>
@@ -88,14 +117,25 @@ export default function Pricing() {
                   {tier.description}
                 </p>
 
-                <button
-                  onClick={() => purchasePlan(tier.id)}
-                  className={`mt-6 block rounded-md px-3 py-2 w-full text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
+                {pricingTiers?.data?.is_active ? (
+                  <button
+                    onClick={() => purchasePlan(tier.id)}
+                    className={`mt-6 block rounded-md px-3 py-2 w-full text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
                     border border-[#3f4e41] text-[#3f4e41] shadow-sm group-hover:bg-[#3f4e41] group-hover:text-white
                 `}
-                >
-                  {t("pricing.buyPlan")}
-                </button>
+                  >
+                    {t("pricing.managePlan")}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => purchasePlan(tier.id)}
+                    className={`mt-6 block rounded-md px-3 py-2 w-full text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
+                    border border-[#3f4e41] text-[#3f4e41] shadow-sm group-hover:bg-[#3f4e41] group-hover:text-white
+                `}
+                  >
+                    {t("pricing.buyPlan")}
+                  </button>
+                )}
                 <ul
                   role="list"
                   className="mt-8 space-y-3 text-sm/6 group-hover:text-white text-gray-600"

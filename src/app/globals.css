@@ -45,3 +45,128 @@ body {
 .bg-primary-light {
   background-color: #c4f2b7;
 }
+
+@keyframes strokeAnimate {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes checkAnimate {
+  0% {
+    stroke-dashoffset: 22;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.checkbox-wrapper {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 5px auto 30px auto;
+}
+
+.checkbox-wrapper .background {
+  fill: #358535;
+  transition: ease all 0.6s;
+}
+
+.checkbox-wrapper .stroke {
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  strokewidth: 2px;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.checkbox-wrapper .check {
+  fill: none;
+  stroke: #fff;
+  strokelinecap: round;
+  strokelinejoin: round;
+  strokewidth: 2px;
+  stroke-dasharray: 22;
+  stroke-dashoffset: 22;
+}
+
+.checkbox-wrapper.animate .stroke {
+  animation: strokeAnimate 0.6s ease forwards;
+}
+
+.checkbox-wrapper.animate .check {
+  animation: checkAnimate 0.6s ease 0.3s forwards;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  margin: 0;
+  opacity: 0;
+  appearance: none;
+}
+
+.checkbox-wrapper input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
+.crossmark__circle.animateElement {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  strokewidth: 2;
+  stroke-miterlimit: 10;
+  stroke: white;
+  fill: #bf0000;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.crossmark.animateElement {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  strokewidth: 2;
+  stroke: #bf0000;
+  stroke-miterlimit: 10;
+  width: 100px;
+  height: 100px;
+  margin: 5px auto 30px auto;
+  box-shadow: inset 0px 0px 0px 30px #bf0000;
+  animation: fillred 0.4s ease-in-out 0.4s forwards,
+    scale 0.3s ease-in-out 0.9s both;
+}
+
+.crossmark__check.animateElement {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.cross__path.animateElement {
+  stroke: #ffffff;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  transform-origin: 50% 50% 0;
+}
+.cross__path--right.animateElement {
+  animation: 0.3s ease 0.8s normal forwards 1 running stroke;
+}
+.cross__path--left.animateElement {
+  animation: 1s ease 0.8s normal forwards 1 running stroke;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

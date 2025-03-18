@@ -255,6 +255,8 @@
     "find": "Find the subscription that makes the most sense for you or your team",
     "pricing": "Pricing",
     "buyPlan": "Buy Plan",
+    "managePlan": "Manage Plan",
+
     "tiers": [
       {
         "name": "Basic",

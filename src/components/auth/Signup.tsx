@@ -1,62 +1,66 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import axios from "axios";
-import Cookies from "js-cookie";
 import PrimaryButton from "../buttons/PrimaryButton";
 import CustomModal from "../UI/CustomModal";
+import { useAuthStore } from "@/store/useAuthStore";
+import { useState } from "react";
+import { showErrorToast, showSuccessToast } from "@/utils/toast";
 
 type SignUpProps = {
   open: boolean;
   setOpen: (open: boolean) => void;
-  setIsLoggedIn: (isLoggedIn: boolean) => void;
   setLoginOpen: (open: boolean) => void;
 };
 
-const SignUp = ({
-  open,
-  setOpen,
-  setIsLoggedIn,
-  setLoginOpen,
-}: SignUpProps) => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
+
+type FormData = yup.InferType<typeof schema>;
+
+const SignUp = ({ open, setOpen, setLoginOpen }: SignUpProps) => {
+  const { setUser } = useAuthStore();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
+  const onSubmit = async (data: FormData) => {
     setLoading(true);
 
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/signup/`,
-        formData
+        data
       );
 
       const { access, refresh } = response?.data?.token;
       const { email } = response?.data;
 
-      Cookies.set("access_token", access, { secure: true, sameSite: "Strict" });
-      Cookies.set("refresh_token", refresh, {
-        secure: true,
-        sameSite: "Strict",
-      });
-      Cookies.set("user_email", email, { secure: true, sameSite: "Strict" });
+      setUser({ accessToken: access, refreshToken: refresh, email });
 
       setOpen(false);
-      setIsLoggedIn(true);
       setLoginOpen(false);
+      showSuccessToast("Account Created");
     } catch (err: any) {
-      setError(err.response?.data?.message || "Something went wrong");
+      showErrorToast(
+        err?.response?.data?.message?.email[0] ||
+          "Error While Login! Please try again later"
+      );
     } finally {
       setLoading(false);
     }
@@ -68,7 +72,7 @@ const SignUp = ({
         Sign up to account
       </h2>
       <div className="mt-7 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
             <label
               htmlFor="email"
@@ -79,14 +83,16 @@ const SignUp = ({
             <div className="mt-2">
               <input
                 id="email"
-                name="email"
                 type="email"
-                value={formData.email}
-                onChange={handleChange}
                 autoComplete="off"
-                required
+                {...register("email")}
                 className="block w-full rounded-md border px-3 py-1.5 text-secondary shadow-sm placeholder:text-gray-400"
               />
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-500">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
           </div>
 
@@ -100,14 +106,16 @@ const SignUp = ({
             <div className="mt-2">
               <input
                 id="password"
-                name="password"
                 type="password"
-                value={formData.password}
-                onChange={handleChange}
                 autoComplete="off"
-                required
+                {...register("password")}
                 className="block w-full rounded-md border px-3 py-1.5 text-secondary shadow-sm placeholder:text-gray-400"
               />
+              {errors.password && (
+                <p className="mt-1 text-sm text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
           </div>
 
