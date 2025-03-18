@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import Cookies from "js-cookie";
 import { CloseIcon, HamburgerIcon } from "@/assets/icons";
 import PrimaryButton from "../buttons/PrimaryButton";
 import Container from "../UI/Container";
@@ -12,10 +11,13 @@ import { usePathname } from "next/navigation";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { useTranslation } from "react-i18next";
 import Login from "../auth/Login";
+import { useAuthStore } from "@/store/useAuthStore";
 
 export default function Header() {
   const pathname = usePathname();
   const { t } = useTranslation();
+
+  const { user, clearUser } = useAuthStore();
 
   const navigation = [
     { name: t("layout.header.features"), href: "/" },
@@ -28,23 +30,9 @@ export default function Header() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const accessToken = Cookies.get("access_token");
-    const email = Cookies.get("user_email");
-    if (accessToken && email) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, [isLoggedIn]);
 
   const handleLogout = () => {
-    Cookies.remove("access_token");
-    Cookies.remove("refresh_token");
-    Cookies.remove("email");
-    setIsLoggedIn(false);
+    clearUser();
   };
 
   return (
@@ -78,7 +66,7 @@ export default function Header() {
           </div>
           <div className="hidden lg:flex gap-5 lg:justify-end items-center">
             <PrimaryButton>{t("layout.common.installforFree")}</PrimaryButton>
-            {isLoggedIn ? (
+            {user ? (
               <PrimaryButton onClick={handleLogout}>Logout</PrimaryButton>
             ) : (
               <PrimaryButton onClick={() => setLoginModal(true)}>
@@ -133,7 +121,7 @@ export default function Header() {
             <PrimaryButton extraCss="w-full">
               {t("layout.common.installforFree")}
             </PrimaryButton>
-            {isLoggedIn ? (
+            {user ? (
               <PrimaryButton extraCss="w-full my-4" onClick={handleLogout}>
                 Logout
               </PrimaryButton>
@@ -149,11 +137,7 @@ export default function Header() {
             <ChangeLanguage />
           </div>
 
-          <Login
-            open={loginModal}
-            setOpen={setLoginModal}
-            setIsLoggedIn={setIsLoggedIn}
-          />
+          <Login open={loginModal} setOpen={setLoginModal} />
         </div>
       </div>
     </header>

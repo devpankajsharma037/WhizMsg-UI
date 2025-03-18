@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import LayoutWrapper from "@/components/wrappers/LayoutWrapper";
 import { Poppins } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import { RouteLoader } from "@/components/UI/Loaders";
 
 export const metadata: Metadata = {
   title: "WHIZMSG",
@@ -23,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.className}>
       <body>
-        <LayoutWrapper>{children}</LayoutWrapper>
+        <ToastContainer />
+        <RouteLoader />
+        {children}
       </body>
     </html>
   );
