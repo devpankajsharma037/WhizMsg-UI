@@ -8,6 +8,7 @@ import CustomModal from "../UI/CustomModal";
 import SignUp from "./Signup";
 import { useAuthStore } from "@/store/useAuthStore";
 import { showErrorToast, showSuccessToast } from "@/utils/toast";
+import OtpInput from "react-otp-input";
 
 type LoginProps = {
   open: boolean;
@@ -16,12 +17,15 @@ type LoginProps = {
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
-  password: yup.string().required("Password is required"),
+  // password: yup.string().required("Password is required"),
 });
 
 const Login = ({ open, setOpen }: LoginProps) => {
   const [signUpModal, setSignUpModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [email, setEmail] = useState("");
 
   const { setUser } = useAuthStore();
 
@@ -34,25 +38,45 @@ const Login = ({ open, setOpen }: LoginProps) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: { email: string; password: string }) => {
+  const onSubmit = async (data: { email: string }) => {
     setLoading(true);
-
+    setEmail(data.email);
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/signin/`,
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/auth/`,
         data
       );
+      // const { access, refresh } = response.data.token;
+      // const { email } = response.data.info;
+      // setUser({ accessToken: access, refreshToken: refresh, email });
+      // setOpen(false);
+      // reset();
+      setOtpSent(true);
+      showSuccessToast("OTP sent successfully");
+    } catch (err: any) {
+      showErrorToast(
+        err?.response?.data?.message?.non_field_errors[0] || "Error sending OTP"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOtpSubmit = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/login/`,
+        { email, otp }
+      );
       const { access, refresh } = response.data.token;
-      const { email } = response.data.info;
+      console.log(access, refresh);
       setUser({ accessToken: access, refreshToken: refresh, email });
       setOpen(false);
       reset();
       showSuccessToast("Login successful");
     } catch (err: any) {
-      showErrorToast(
-        err?.response?.data?.message?.non_field_errors[0] ||
-          "Error While Login! Please try again later"
-      );
+      showErrorToast(err?.response?.data?.message || "Invalid OTP");
     } finally {
       setLoading(false);
     }
@@ -65,33 +89,34 @@ const Login = ({ open, setOpen }: LoginProps) => {
           Login to your account
         </h2>
         <div className="mt-7 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-secondary"
-              >
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  type="email"
-                  autoComplete="off"
-                  {...register("email")}
-                  className={`block w-full rounded-md border px-3 py-1.5 text-secondary shadow-sm placeholder:text-gray-400 ${
-                    errors.email ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-500">
-                    {errors.email.message}
-                  </p>
-                )}
+          {!otpSent ? (
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-secondary"
+                >
+                  Email address
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="email"
+                    type="email"
+                    autoComplete="off"
+                    {...register("email")}
+                    className={`block w-full rounded-md border px-3 py-1.5 text-secondary shadow-sm placeholder:text-gray-400 ${
+                      errors.email ? "border-red-500" : ""
+                    }`}
+                  />
+                  {errors.email && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <div>
+              {/* <div>
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
@@ -121,16 +146,47 @@ const Login = ({ open, setOpen }: LoginProps) => {
                   </p>
                 )}
               </div>
-            </div>
+            </div> */}
 
-            <div>
-              <PrimaryButton type="submit" extraCss="w-full" disabled={loading}>
-                {loading ? "Logging in..." : "Login"}
+              <div>
+                <PrimaryButton
+                  type="submit"
+                  extraCss="w-full"
+                  disabled={loading}
+                >
+                  {loading ? "Logging in..." : "Login"}
+                </PrimaryButton>
+              </div>
+            </form>
+          ) : (
+            <div className="space-y-6">
+              <OtpInput
+                value={otp}
+                onChange={setOtp}
+                numInputs={4}
+                renderSeparator={<span>-</span>}
+                inputStyle={{
+                  width: "100%",
+                  height: "50px",
+                  fontSize: "20px",
+                  textAlign: "center",
+                  border: "1px solid #ccc",
+                  borderRadius: "5px",
+                  margin: "5px",
+                }}
+                renderInput={(props) => <input {...props} />}
+              />
+              <PrimaryButton
+                onClick={handleOtpSubmit}
+                extraCss="w-full"
+                disabled={loading}
+              >
+                {loading ? "Verifying..." : "Verify OTP"}
               </PrimaryButton>
             </div>
-          </form>
+          )}
 
-          <p className="mt-5 text-center text-sm text-secondary">
+          {/* <p className="mt-5 text-center text-sm text-secondary">
             Not a member?{" "}
             <span
               onClick={() => {
@@ -141,7 +197,7 @@ const Login = ({ open, setOpen }: LoginProps) => {
             >
               Sign up
             </span>
-          </p>
+          </p> */}
         </div>
       </CustomModal>
 
