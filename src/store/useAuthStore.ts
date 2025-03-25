@@ -14,7 +14,10 @@ type AuthState = {
 };
 
 export const useAuthStore = create<AuthState>((set) => ({
-  user: null,
+  user:
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("user") || "null")
+      : null,
   setUser: (user) => {
     if (typeof window !== "undefined") {
       localStorage.setItem("user", JSON.stringify(user));
