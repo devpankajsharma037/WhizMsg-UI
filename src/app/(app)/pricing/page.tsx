@@ -1,73 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CheckIcon } from "@/assets/icons";
 import Container from "@/components/UI/Container";
 import { useTranslation } from "react-i18next";
-import axios from "axios";
-import { useAuthStore } from "@/store/useAuthStore";
+import SubscriptionModal from "@/components/UI/SubscriptionModal";
 
 export default function Pricing() {
   const { t } = useTranslation();
 
-  const { user } = useAuthStore();
-
   const pricingTier = t("pricing.tiers", { returnObjects: true });
 
   const [pricingTiers, setPricingTiers] = useState<any>("");
+  const [openModal, setOpenModal] = useState(false);
 
-  useEffect(() => {
-    const fetchPricingTiers = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v3/info/`,
-          {
-            headers: {
-              Authorization: `Bearer ${user?.accessToken}`,
-            },
-          }
-        );
-        setPricingTiers(response.data);
-      } catch (error: any) {
-        console.error(
-          "Failed to fetch pricing info:",
-          error.response?.data?.message || "Something went wrong"
-        );
-      }
-    };
-    if (user?.accessToken) {
-      fetchPricingTiers();
-    }
-  }, []);
-
-  const purchasePlan = async (id: string) => {
-    const token = user?.accessToken;
-
-    if (!token) {
-      console.error("Access token is missing");
-      return;
-    }
-
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/v3/checkout/`,
-        { plan_id: id },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      window.location.href = response?.data?.checkout_url;
-    } catch (error: any) {
-      console.error(
-        "Checkout failed:",
-        error.response?.data?.message || "Something went wrong"
-      );
-    }
+  const purchasePlan = () => {
+    setOpenModal(true);
   };
-
-  console.log(pricingTiers);
 
   return (
     <Container>
@@ -98,6 +47,7 @@ export default function Pricing() {
             </div>
           </fieldset>
         </div>
+        <SubscriptionModal open={openModal} onOpenChange={setOpenModal} />
         <div className="isolate mx-auto mt-10 gap-8 max-w-[400px] justify-center">
           {pricingTier &&
             Array.isArray(pricingTier) &&
@@ -119,7 +69,7 @@ export default function Pricing() {
 
                 {pricingTiers?.data?.is_active ? (
                   <button
-                    onClick={() => purchasePlan(tier.id)}
+                    onClick={purchasePlan}
                     className={`mt-6 block rounded-md px-3 py-2 w-full text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
                     border border-[#3f4e41] text-[#3f4e41] shadow-sm group-hover:bg-[#3f4e41] group-hover:text-white
                 `}
@@ -128,7 +78,7 @@ export default function Pricing() {
                   </button>
                 ) : (
                   <button
-                    onClick={() => purchasePlan(tier.id)}
+                    onClick={purchasePlan}
                     className={`mt-6 block rounded-md px-3 py-2 w-full text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
                     border border-[#3f4e41] text-[#3f4e41] shadow-sm group-hover:bg-[#3f4e41] group-hover:text-white
                 `}

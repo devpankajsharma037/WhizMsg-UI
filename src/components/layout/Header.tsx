@@ -19,8 +19,6 @@ export default function Header() {
 
   const { user, clearUser } = useAuthStore();
 
-  console.log(user);
-
   const navigation = [
     { name: t("layout.header.features"), href: "/" },
     { name: t("layout.header.pricing"), href: "/pricing" },
