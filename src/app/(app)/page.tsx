@@ -175,7 +175,7 @@ export default function Home() {
                 <div
                   className="group transition-all"
                   key={elm?.id}
-                  data-aos="zoom-in" // Add AOS animation here
+                  data-aos="zoom-in"
                 >
                   <div className="w-full bg-white rounded-[20px] px-3 hover:shadow-[6px_4px_14px_1px_#dcdcdc] scale-1 hover:scale-[1.025] overflow-hidden group-hover:bg-[#02914c] group-hover:text-white">
                     <button
@@ -184,7 +184,7 @@ export default function Home() {
                     >
                       <h3 className="flex flex-col sm:flex-row sm:items-center group-hover:text-white text-base md:text-xl">
                         <p className="whitespace-nowrap font-bold mr-1">
-                          {elm?.id}
+                          {elm?.id}.
                         </p>
                         <div className="flex items-center">
                           <p className="font-extrabold">{elm?.title}</p>
@@ -213,10 +213,10 @@ export default function Home() {
         </Container>
       </div>
       <Container>
-        <div id="testimonials" className="my-8 sm:my-10">
+        {/* <div id="testimonials" className="my-8 sm:my-10">
           <CustomerReview />
-        </div>
-        <div className="my-8 sm:my-10">
+        </div> */}
+        <div className="my-8 sm:my-10 bg-white">
           <FaqsSection />
         </div>
       </Container>

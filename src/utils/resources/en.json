@@ -29,7 +29,7 @@
           "heading": "Support",
           "links": {
             "contactUs": "Contact us",
-            "legal": "Legal"
+            "legal": "Terms of use"
           }
         },
         "resources": {
@@ -240,7 +240,7 @@
       "description": "Yes, WHIZMSG supports usage on multiple devices or tabs as long as you are logged into your account."
     }
   },
-  "faq_section": {
+  "faqSection": {
     "title": "Frequently asked questions",
     "description": "Can’t find the answer you’re looking for? Reach out to our  team.",
     "customerSupport": "customer support"

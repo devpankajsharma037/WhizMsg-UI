@@ -23,8 +23,8 @@ export default function Header() {
     { name: t("layout.header.features"), href: "/" },
     { name: t("layout.header.pricing"), href: "/pricing" },
     { name: t("layout.header.help"), href: "/help" },
-    { name: t("layout.header.guide"), href: "/guide" },
-    { name: t("layout.header.earnWithUs"), href: "#" },
+    // { name: t("layout.header.guide"), href: "/guide" },
+    // { name: t("layout.header.earnWithUs"), href: "#" },
     { name: t("layout.header.contactUs"), href: "/contact" },
   ];
 
@@ -40,7 +40,9 @@ export default function Header() {
       <Container>
         <nav className="flex items-center justify-between">
           <div className="flex">
-            <Image alt="" src={logo} className="h-auto w-[90px]" />
+            <Link href={"/"}>
+              <Image alt="" src={logo} className="h-auto w-[90px]" />
+            </Link>
           </div>
           <div className="flex lg:hidden">
             <button
