@@ -3,6 +3,8 @@ import { RadioGroup } from "@headlessui/react";
 import { CreditCard, Calendar, CheckCircle2 } from "lucide-react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { Loader } from "./Loader";
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 interface SubscriptionFormProps {
   onSubmit: (formData: {
@@ -34,14 +36,14 @@ const SubscriptionForm = ({
       newErrors.name = "Name is required";
       isValid = false;
     }
-
-    if (!mobile.trim()) {
+    if (!mobile || mobile=== undefined) {
       newErrors.mobile = "Mobile number is required";
       isValid = false;
-    } else if (!/^\d{10}$/.test(mobile)) {
-      newErrors.mobile = "Please enter a valid 10-digit mobile number";
-      isValid = false;
     }
+    // } else if (!/^\d{10}$/.test(mobile)) {
+    //   newErrors.mobile = "Please enter a valid 10-digit mobile number";
+    //   isValid = false;
+    // }
 
     setErrors(newErrors);
     return isValid;
@@ -71,7 +73,7 @@ const SubscriptionForm = ({
     {
       value: "90",
       label: "3 Months",
-      price: "14.900 KWD/Monthly",
+      price: "4.99 KWD/Monthly",
       icon: <Calendar className="h-4 w-4 mr-2 text-[#02914c]" />,
       color: "text-[#02914c]",
     },
@@ -120,12 +122,11 @@ const SubscriptionForm = ({
           >
             Mobile Number
           </label>
-          <input
-            id="mobile"
-            type="text"
+          <PhoneInput
+            placeholder="Enter your mobile number"
             value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-            placeholder="Enter your 10-digit mobile number"
+            defaultCountry={"KW"}
+            onChange={(e:any) => setMobile(e)}
             className={`w-full px-3 py-2 border rounded-md focus:outline-none ${
               errors.mobile
                 ? "border-red-500 ring-red-200"

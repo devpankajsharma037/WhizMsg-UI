@@ -164,3 +164,7 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
+input.PhoneInputInput:focus-visible {
+  outline: 0px;
+}

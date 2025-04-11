@@ -4,6 +4,10 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Container from "@/components/UI/Container";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
+import axios from "axios";
+import { showErrorToast,showSuccessToast} from "@/utils/toast";
 
 type FormData = {
   firstName: string;
@@ -17,7 +21,6 @@ type FormErrors = Partial<Record<keyof FormData, string>>;
 
 export default function ContactUs() {
   const { t } = useTranslation();
-
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -25,7 +28,7 @@ export default function ContactUs() {
     phone: "",
     message: "",
   });
-
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
 
   const handleChange = (e: any) => {
@@ -50,11 +53,12 @@ export default function ContactUs() {
       newErrors.email = "Invalid email format.";
     }
 
-    if (!formData.phone.trim()) {
+    if (!formData.phone || formData.phone === undefined) {
       newErrors.phone = "Phone number is required.";
-    } else if (!/^\+?[0-9\s\-]{7,15}$/.test(formData.phone)) {
-      newErrors.phone = "Invalid phone number.";
-    }
+    } 
+    // else if (!/^\+?[0-9\s\-]{7,15}$/.test(formData.phone)) {
+    //   newErrors.phone = "Invalid phone number.";
+    // }
 
     if (!formData.message.trim()) newErrors.message = "Message is required.";
 
@@ -62,11 +66,34 @@ export default function ContactUs() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async(e: any) => {
     e.preventDefault();
     if (!validate()) return;
-
-    console.log("Form submitted", formData);
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/contact-us/`,
+        {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          phone_number: formData.phone,
+          message: formData.message,
+        },
+      );
+      setLoading(false);
+      showSuccessToast("Thank You for Reaching Out! your response submitted successfully");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      })
+    } catch (error: any) {
+      showErrorToast( error?.response?.data?.message || "OOPS! Something went wrong while purchasing plan");
+      setLoading(false);
+    }
   };
 
   return (
@@ -220,13 +247,12 @@ export default function ContactUs() {
                         {t("contactUs.form.phoneNumber.label")}
                       </label>
                       <div className="mt-2.5">
-                        <input
-                          name="phone"
-                          type="tel"
-                          autoComplete="tel"
-                          className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-secondary outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#02914c]"
+                        <PhoneInput
+                          placeholder="Enter your mobile number"
                           value={formData.phone}
-                          onChange={handleChange}
+                          defaultCountry={"KW"}
+                          onChange={(e)=>handleChange({target:{name:"phone",value:e}})}
+                          className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-secondary outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#02914c]"
                         />
                         {errors.phone && (
                           <p className="text-red-600 text-sm mt-1">

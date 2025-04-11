@@ -23,7 +23,7 @@ const SubscriptionModal = ({ open, onOpenChange }: SubscriptionModalProps) => {
     const token = user?.accessToken;
 
     if (!token) {
-      console.error("Access token is missing");
+      showErrorToast("Please login first!");
       return;
     }
 
@@ -36,7 +36,7 @@ const SubscriptionModal = ({ open, onOpenChange }: SubscriptionModalProps) => {
           cust_mobile: formData.mobile,
           payment_type: formData.paymentMethod,
           days: Number.parseInt(formData.duration),
-          amount: formData.duration === "90" ? "14.900" : "3.75",
+          amount: formData.duration === "90" ? "4.99" : "3.75",
         },
         {
           headers: {

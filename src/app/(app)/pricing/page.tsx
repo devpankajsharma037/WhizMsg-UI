@@ -101,67 +101,6 @@ export default function Pricing() {
             ))}
         </div>
       </div>
-
-      {/* <div className="mt-8 md:mt-12 xl:mt-16 space-y-8 md:space-y-12 xl:space-y-16 w-full overflow-x-auto">
-      
-        {tableSections.map((section) => (
-          <div
-            key={section.name}
-            className="space-y-2 md:space-y-4 xl:space-y-6"
-          >
-            <h3 className="text-xl font-semibold text-gray-900">
-              {section.name}
-            </h3>
-            <table className="relative w-full border-separate border-spacing-x-8">
-              <thead>
-                <tr className="text-left ">
-                  <th scope="col">
-                    <span className="sr-only">Feature</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="">
-                {section.features.map((feature: any) => (
-                  <tr key={feature.name} className="my-5">
-                    <th
-                      scope="row"
-                      className="w-1/4 py-3 pr-4 text-left text-sm font-normal text-gray-900"
-                    >
-                      {feature.name}
-                    </th>
-                    {tiers.map((tier) => (
-                      <td
-                        key={tier.id}
-                        className="relative w-1/4 px-4 py-0  text-center"
-                      >
-                        <span className="relative  py-3  bg-none  md:bg-[#DCF6D45E] rounded-xl my-3 flex justify-center  w-full">
-                          {feature.tiers[tier.name] === "string" ? (
-                            <span className={` text-sm`}>
-                              {feature.tiers[tier.name]}
-                            </span>
-                          ) : (
-                            <>
-                              {feature.tiers[tier.name] === true ? (
-                                <span className="text-secondary">
-                                  <CheckIcon />
-                                </span>
-                              ) : (
-                                <span className="text-secondary">
-                                  <CrossIcon />
-                                </span>
-                              )}
-                            </>
-                          )}
-                        </span>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ))}
-      </div> */}
     </Container>
   );
 }
