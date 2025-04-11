@@ -18,7 +18,7 @@ const BannerSection = () => {
                 {t("bannerSection.tagline")}
               </p>
 
-              <h2 className="text-[26px] sm:text-[35px] md:text-[40px] xl:text-[52px] font-bold sm:font-semibold font-plus text-center mb-4">
+              <h2 className="text-[26px] sm:text-[35px] md:text-[40px] xl:text-[52px] font-bold sm:font-semibold font-plus text-center mb-4 text-black">
                 {t("bannerSection.heading")}
               </h2>
               <p className="max-w-[960px] mx-auto text-secondary mt-6 text-indigo-200">

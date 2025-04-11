@@ -18,14 +18,14 @@ const Footer = () => {
       heading: t("layout.footer.navigation.company.heading"),
       links: [
         { name: t("layout.footer.navigation.company.links.home"), href: "/" },
-        {
-          name: t("layout.footer.navigation.company.links.testimonials"),
-          href: "/testimonials",
-        },
-        {
-          name: t("layout.footer.navigation.company.links.whyWHIZMSG"),
-          href: "/why-whizmsg",
-        },
+        // {
+        //   name: t("layout.footer.navigation.company.links.testimonials"),
+        //   href: "/testimonials",
+        // },
+        // {
+        //   name: t("layout.footer.navigation.company.links.whyWHIZMSG"),
+        //   href: "/why-whizmsg",
+        // },
       ],
     },
     {
@@ -48,18 +48,18 @@ const Footer = () => {
           name: t("layout.footer.navigation.resources.links.help"),
           href: "/help",
         },
-        {
-          name: t("layout.footer.navigation.resources.links.userGuide"),
-          href: "/guide",
-        },
+        // {
+        //   name: t("layout.footer.navigation.resources.links.userGuide"),
+        //   href: "/guide",
+        // },
       ],
     },
   ];
 
   return (
     <footer className="bg-white mb-8">
-      <Container>
-        <div className="my-8 md:my-12 px-5 py-10 md:py-12  xl:py-16 relative bg-[#DCF6D4] rounded-xl">
+      <div className="my-8 md:my-12 px-5 py-10 md:py-12  xl:py-16 relative bg-[#DCF6D4]">
+        <Container>
           <div className="flex flex-col md:flex-row gap-y-8 gap-x-8 items-center justify-between">
             <section data-aos="fade-up">
               <div style={{ opacity: 1, transform: "none" }}>
@@ -79,10 +79,15 @@ const Footer = () => {
               </div>
             </section>
           </div>
-        </div>
+        </Container>
+      </div>
+      <Container>
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" className="flex items-center">
+            <a
+              href="https://flowbite.com/"
+              className="flex items-center justify-center"
+            >
               <Image src={logo} alt="logo" className="h-auto w-[120px]" />
             </a>
             <div className="mb-5">
@@ -90,7 +95,7 @@ const Footer = () => {
                 &copy; {new Date().getFullYear()} {t("layout.footer.copyright")}
               </p>
             </div>
-            <ul className="flex justify-start gap-6 ">
+            <ul className="flex justify-center gap-6 ">
               <li>
                 <a
                   href="#"
