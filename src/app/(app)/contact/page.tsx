@@ -72,7 +72,7 @@ export default function ContactUs() {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/contact-us/`,
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/contact-us/`,
         {
           first_name: formData.firstName,
           last_name: formData.lastName,
